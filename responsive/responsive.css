@@ -1,7 +1,18 @@
-@media screen and (min-device-width:1201px){
+
+/* How the customer explained it */
+@media screen and (min-width:1201px){
 	.software{
-		width:128px;
-		height:240px;
-		background:url(software.png) 0 0px;;
+	width:128px;
+	height:240px;
+	background:url(software.png) 0 0px;;
+	}
+}
+
+/* How the project leader understood it */
+@media screen and (min-width:1101px) and (max-width:1200px){
+	.software{
+	width:128px;
+	height:240px;
+	background:url(software.png) -128px 0px;
 	}
 }
