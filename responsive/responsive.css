@@ -26,3 +26,11 @@
 	}
 }
 
+/* How the programmer wrote it */
+@media screen and (min-width:901px) and (max-width:1000px){
+	.software{
+	width:128px;
+	height:240px;
+	background:url(software.png) -384px 0px;
+	}
+}
