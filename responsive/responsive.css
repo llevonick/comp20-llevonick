@@ -72,4 +72,12 @@
 }
 
 /* How it was supported */
+@media screen and (min-width:401px) and (max-width:500px){
+	.software{
+	width:128px;
+	height:240px;
+	background:url(software.png) -384px -240px;
+	}
+}
+
 /* What the customer really needed */
