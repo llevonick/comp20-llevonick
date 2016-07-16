@@ -1,5 +1,7 @@
-.software{
-width:640px;
-height:480px;
-background:url(software.png) 0 0px;
+@media screen and (min-device-width:1201px){
+	.software{
+		width:128px;
+		height:240px;
+		background:url(software.png) 0 0px;;
+	}
 }
