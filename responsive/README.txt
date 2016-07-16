@@ -7,4 +7,4 @@ private GitHub repository.
 
 I did not colaborate with anyone on this assignment.
 
-I spent about 1-2 hours on this assignemnt.
+I spent about 1-2 hours on this assignment.
