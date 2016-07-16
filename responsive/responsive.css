@@ -81,3 +81,10 @@
 }
 
 /* What the customer really needed */
+@media screen and (max-width:400px){
+	.software{
+	width:128px;
+	height:240px;
+	background:url(software.png) -512px -240px;
+	}
+}
