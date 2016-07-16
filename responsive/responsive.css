@@ -45,6 +45,14 @@
 }
 
 /* How the project was documented */
+@media screen and (min-width:701px) and (max-width:800px){
+	.software{
+	width:128px;
+	height:240px;
+	background:url(software.png) 0 -240px;
+	}
+}
+
 /* What operations installed */
 /* How the customer was billed */
 /* How it was supported */
