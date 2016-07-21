@@ -18,7 +18,10 @@
 	var lyrics = document.getElementById("lyrics");
 
 	video.addEventListener("timeupdate", function(){
-		if(video.currentTime >= 8 && video.currentTime < 15){
+		if(video.currentTime < 8){
+			lyrics.innerHTML = "<p><img src='Kentucky.png' alt = 'Kentucky'/></p>";
+		}
+		else if(video.currentTime >= 8 && video.currentTime < 15){
 			lyrics.innerHTML = "<h2>The sun shines bright in My Old Kentucky Home,</h2>";
 		}
 		else if(video.currentTime >= 15 && video.currentTime < 21){
