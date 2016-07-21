@@ -1,20 +1,26 @@
 h1{
-	font-size:47px;
-	font-family:Georgia;
-	font-weight:bold;
-
-	text-align:center;
+font-size:47px;
+font-family:Georgia;
+font-weight:bold;
+text-align:center;
 }
 
 h2{
-	font-family:Georgia;
-	font-style:italic;
-	text-align:center;
+font-family:Georgia;
+font-style:italic;
+text-align:center;
 }
 
 video{
-	display:block;
-	margin:0 auto;
+display:block;
+margin:0 auto;
+}
+
+img{
+width:300px;
+height:auto;
+display:block;
+margin:0 auto;
 }
 
 body{background-color:#D3C5D3;}
