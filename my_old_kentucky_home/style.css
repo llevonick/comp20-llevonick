@@ -4,6 +4,12 @@ h1{
 	text-align:center;
 }
 
+h2{
+	font-family:Georgia;
+	font-style:italic;
+	text-align:center;
+}
+
 video{
 	display:block;
 	margin:0 auto;
