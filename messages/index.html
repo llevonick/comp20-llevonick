@@ -8,9 +8,20 @@
   <script>
     function parse() {
       jsonData = '[{"id":1,"content":"Do you really want to hurt me?","username":"Boy"},{"id":2,"content":"Do you really want to make me cry?","username":"George"}]';
+      
       parsed = JSON.parse(jsonData);
-
       console.log(parsed[0]["content"]);
+      
+      document.getElementById("messages").innerHTML = '<p class="msg">' + parsed[0]["content"]+ " " + parsed[0]["username"];
+      
+      //for(var i = 0; i < jsonData.length; i < len; i++){}
+      /*theMessages = document.getElementById("messages").value;
+      parsing = document.getElementById("content");
+
+      newMessage = document.createElement("p");
+      newMessage.innerHTML = '<p><span class="messages">' + theMessages + '<span></p>'
+      parsing.insertBefore(newMessage, parsing.childNodes[0]);
+      document.getElementById("messages").value = "";*/
 
     }
   </script>
