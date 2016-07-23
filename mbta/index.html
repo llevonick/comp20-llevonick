@@ -8,7 +8,7 @@
     <title>MBTA Map</title>
     <script type = "text/javascript" src = "https://maps.googleapis.com/maps/api/js?sensor=true"></script>
     <script>
-        stations = [
+        /*stations = [
             {"id":"South Station", "Lat":42.352271, "Lng":-71.05524200000001},
             {"id":"Andrew", "Lat":42.330154, "Lng":-71.057655},
             {"id":"Porter Square", "Lat":42.3884, "Lng":-71.11914899999999},
@@ -31,10 +31,38 @@
             {"id":"Fields Corner", "Lat":42.300093, "Lng":-71.061667},
             {"id":"Central Square", "Lat":42.365486, "Lng":-71.103802},
             {"id":"Braintree", "Lat":42.2078543, "Lng":-71.0011385},
-        ]
+        ]*/
+
+        stations = {}
+        stations["South Station"] = {lat:42.352271, lng:-71.05524200000001};
+        stations["Andrew"] = {lat:42.330154, lng:-71.057655};
+        stations["Porter Square"] = {lat:42.3884, lng:-71.11914899999999};
+        stations["Harvard Square"] = {lat:42.373362, lng:-71.118956};
+        stations["JFK/UMass"] = {lat:42.320685, lng:-71.052391};
+        stations["Savin Hill"] = {lat:42.31129, lng:-71.053331};
+        stations["Park Street"] = {lat:42.35639457, lng:-71.0624242};
+        stations["Broadway"] = {lat:42.342622, lng:-71.056967};
+        stations["North Quincy"] = {lat:42.275275, lng:-71.029583};
+        stations["Shawmut"] = {lat:42.29312583, lng:-71.06573796000001};
+        stations["Davis"] = {lat:42.39674, lng:-71.121815};
+        stations["Alewife"] = {lat:42.395428, lng:-71.142483};
+        stations["Kendall/MIT"] = {lat:42.36249079, lng:-71.08617653};
+        stations["Charles/MGH"] = {lat:42.361166, lng:-71.070628};
+        stations["Downtown Crossing"] = {lat:42.355518, lng:-71.060225};
+        stations["Quincy Center"] = {lat:42.251809, lng:-71.005409};
+        stations["Quincy Adams"] = {lat:42.233391, lng:-71.007153};
+        stations["Ashmont"] = {lat:42.284652, lng:-71.06448899999999};
+        stations["Wollaston"] = {lat:42.2665139, lng:-71.0203369};
+        stations["Fields Corner"] = {lat:42.300093, lng:-71.061667};
+        stations["Central Square"] = {lat:42.365486, lng:-71.103802};
+        stations["Braintree"] = {lat:42.2078543, lng:-71.0011385};
+
+        stationNames = Object.keys(stations);
 
         request = new XMLHttpRequest();
-        myLoc = new google.maps.LatLng(stations[0]["Lat"], stations[0]["Lng"]);
+        //myLoc = new google.maps.LatLng(stations[0]["Lat"], stations[0]["Lng"]);
+        myLoc = new google.maps.LatLng(stations["South Station"]);
+
 
         options = {
             zoom: 13,
@@ -49,19 +77,33 @@
         function init(){
             map = new google.maps.Map(document.getElementById("mbta_map"), options);
             markers(map);
+            //redline(map);
         }
 
         function markers(map){
-            for(var i = 0; i < stations.length; i++){
-                var station = stations[i];
+            console.log(stationNames.length);
+            for(var i = 0; i < stationNames.length; i++){
+                //var station = stations[i];
                 var marker = new google.maps.Marker({
-                    position: {lat: station["Lat"], lng: station["Lng"]},
-                    title: station["id"],
+                    position: stations[stationNames[i]],
+                    title: stationNames[i],
                     icon: img
                 });
+               // path = []
+               // path.push(new google.maps.LatLng(station["Lat"], station["Lng"]))
                 marker.setMap(map);
             }
         }
+
+        /*function redline(map){
+            var tPath = new google.maps.Polyline({
+                path:
+                geodesic: true;
+                strokeColor: '#FF3F4E';
+                strokeOpactiy: 1;
+                strokeWeight: 2;
+            })
+        }*/
     </script>
 </head>
 
