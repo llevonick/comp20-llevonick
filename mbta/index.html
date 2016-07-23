@@ -6,9 +6,23 @@
   <meta charset="utf-8" />
   <link rel = "stylesheet" href = "style.css" />
   <title>MBTA Map</title>
-  <script type = "text/javascript" src = "https://googleapis.com/maps/api/js?sensor=true"></script>
+  <script type = "text/javascript" src = "https://maps.googleapis.com/maps/api/js?sensor=true"></script>
   <script>
+    SouthStationLat = 42.352271;
+    SouthStationLng = -71.05524200000001;
 
+    request = new XMLHttpRequest();
+    myLoc = new google.maps.LatLng(SouthStationLat, SouthStationLng);
+
+    options = {
+      zoom: 13,
+      center: myLoc,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+
+    var map;
+    var marker;
+    infowindow = new google.maps.InfoWindow();
   </script>
 </head>
 
