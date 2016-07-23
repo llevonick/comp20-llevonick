@@ -11,8 +11,12 @@
         SouthStationLat = 42.352271;
         SouthStationLng = -71.05524200000001;
 
+        stations = [
+        {"id":"SouthStation", "Lat":42.352271, "Lng":-71.05524200000001},
+        {"id":"Andrew", "Lat":42.330154, "Lng":-71.057655}
+        ]
         request = new XMLHttpRequest();
-        myLoc = new google.maps.LatLng(SouthStationLat, SouthStationLng);
+        myLoc = new google.maps.LatLng(stations["SouthStation"]["Lat"], stations["SouthStation"]["Lng"]);
 
         options = {
             zoom: 13,
