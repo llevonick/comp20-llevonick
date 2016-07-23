@@ -37,8 +37,6 @@
         request = new XMLHttpRequest();
         myLoc = new google.maps.LatLng(stations["South Station"]);
 
-        tPath = [];
-
         options = {
             zoom: 13,
             center: myLoc,
@@ -48,6 +46,11 @@
         img = "t.png";
 
         infowindow = new google.maps.InfoWindow();
+
+        FirstRedSeg = [];
+        SecondRedSeg = [];
+
+        SecondRedSeg.push(stations["JFK/UMass"]);
 
         function init(){
             map = new google.maps.Map(document.getElementById("mbta_map"), options);
@@ -62,21 +65,44 @@
                     title: stationNames[i],
                     icon: img
                 });
-                tPath.push(stations[stationNames[i]]);
                 marker.setMap(map);
             }
         }
 
         function redPolyline(map){
-            redLinePath = new google.maps.Polyline({
-                path: tPath,
+            FirstRedSegDone = 0;
+
+            for(var i = 0; i < stationNames.length; i++){
+                if(FirstRedSegDone == 0){
+                    FirstRedSeg.push(stations[stationNames[i]]);
+                    if(stationNames[i] == "Ashmont"){
+                        FirstRedSegDone += 1;
+                    }
+                }
+                else{
+                    SecondRedSeg.push(stations[stationNames[i]]);
+                }
+            }
+
+            FirstRedLinePath = new google.maps.Polyline({
+                path: FirstRedSeg,
                 geodesic: true,
                 strokeColor: '#FF3F4E',
                 strokeOpactiy: 1,
                 strokeWeight: 2
             });
 
-            redLinePath.setMap(map);
+            FirstRedLinePath.setMap(map);
+
+            SecondRedLinePath = new google.maps.Polyline({
+                path: SecondRedSeg,
+                geodesic: true,
+                strokeColor: '#FF3F4E',
+                strokeOpactiy: 1,
+                strokeWeight: 2
+            });
+
+            SecondRedLinePath.setMap(map);
         }
     </script>
 </head>
