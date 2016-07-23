@@ -23,10 +23,14 @@
     var map;
     var marker;
     infowindow = new google.maps.InfoWindow();
+
+    function init(){
+      map = new google.maps.Map(document.getElementById("mbta_map"), options);
+    }
   </script>
 </head>
 
-<body>
+<body onload = "init()">
   <div id="mbta_map"></div>
 </body>
 
