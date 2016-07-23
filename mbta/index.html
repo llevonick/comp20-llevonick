@@ -20,14 +20,18 @@
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
 
+        img = "t.png";
+
         marker = new google.maps.Marker({
             position: myLoc,
+            icon: img
         });
+
         infowindow = new google.maps.InfoWindow();
 
         function init(){
             map = new google.maps.Map(document.getElementById("mbta_map"), options);
-            marker.setMap(map)
+            marker.setMap(map);
         }
     </script>
 </head>
