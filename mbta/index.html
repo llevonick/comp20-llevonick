@@ -3,35 +3,35 @@
 <html>
 
 <head>
-  <meta charset="utf-8" />
-  <link rel = "stylesheet" href = "style.css" />
-  <title>MBTA Map</title>
-  <script type = "text/javascript" src = "https://maps.googleapis.com/maps/api/js?sensor=true"></script>
-  <script>
-    SouthStationLat = 42.352271;
-    SouthStationLng = -71.05524200000001;
+    <meta charset="utf-8" />
+    <link rel = "stylesheet" href = "style.css" />
+    <title>MBTA Map</title>
+    <script type = "text/javascript" src = "https://maps.googleapis.com/maps/api/js?sensor=true"></script>
+    <script>
+        SouthStationLat = 42.352271;
+        SouthStationLng = -71.05524200000001;
 
-    request = new XMLHttpRequest();
-    myLoc = new google.maps.LatLng(SouthStationLat, SouthStationLng);
+        request = new XMLHttpRequest();
+        myLoc = new google.maps.LatLng(SouthStationLat, SouthStationLng);
 
-    options = {
-      zoom: 13,
-      center: myLoc,
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
+        options = {
+            zoom: 13,
+            center: myLoc,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
 
-    var map;
-    var marker;
-    infowindow = new google.maps.InfoWindow();
+        var map;
+        var marker;
+        infowindow = new google.maps.InfoWindow();
 
-    function init(){
-      map = new google.maps.Map(document.getElementById("mbta_map"), options);
-    }
-  </script>
+        function init(){
+            map = new google.maps.Map(document.getElementById("mbta_map"), options);
+        }
+    </script>
 </head>
 
 <body onload = "init()">
-  <div id="mbta_map"></div>
+    <div id="mbta_map"></div>
 </body>
 
 </html>
