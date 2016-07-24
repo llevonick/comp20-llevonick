@@ -101,6 +101,24 @@
 
         orangeStationNames = Object.keys(orangeStations);
 
+        orangeLine = [];
+
+        function orangePolyline(map){
+            for(var i = 0; i < orangeStationNames.length; i++){
+                orangeLine.push(orangeStations[orangeStationNames[i]]);
+            }
+
+            orangeLinePath = new google.maps.Polyline({
+                path: orangeLine,
+                geodesic: true,
+                strokeColor: '#FFA64F',
+                strokeOpactiy: 1,
+                strokeWeight: 5
+            });
+
+            orangeLinePath.setMap(map);
+        }
+
         // Blue line stations and polyline
 
         // Commuter Rail stations and polyline
@@ -123,6 +141,7 @@
             markers(map, redStations, redStationNames);
             markers(map, orangeStations, orangeStationNames);
             redPolyline(map);
+            orangePolyline(map);
         }
 
         function markers(map, stations, names){
