@@ -35,40 +35,10 @@
 
         redStationNames = Object.keys(redStations);
 
-        request = new XMLHttpRequest();
-        myLoc = new google.maps.LatLng(redStations["South Station"]);
-
-        options = {
-            zoom: 13,
-            center: myLoc,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-
-        img = "t.png";
-
-        infowindow = new google.maps.InfoWindow();
-
         FirstRedSeg = [];
         SecondRedSeg = [];
 
         SecondRedSeg.push(redStations["JFK/UMass"]);
-
-        function init(){
-            map = new google.maps.Map(document.getElementById("mbta_map"), options);
-            markers(map);
-            redPolyline(map);
-        }
-
-        function markers(map){
-            for(var i = 0; i < redStationNames.length; i++){
-                var marker = new google.maps.Marker({
-                    position: redStations[redStationNames[i]],
-                    title: redStationNames[i],
-                    icon: img
-                });
-                marker.setMap(map);
-            }
-        }
 
         function redPolyline(map){
             FirstRedSegDone = 0;
@@ -104,34 +74,64 @@
             });
 
             SecondRedLinePath.setMap(map);
+        }
 
-            // Orange line stations and polyline
-            orangeStations = {}
-            orangeStations["Oak Grove"] = {lat:42.436683, lng:-71.071097}
-            orangeStations["Malden Center"] = {lat:42.426847, lng:-71.074291}
-            orangeStations["Wellington"] = {lat:42.401665, lng:-71.077135}
-            orangeStations["Assembly"] = {lat:42.392739, lng:-71.077276}
-            orangeStations["Sullivan Sqaure"] = {lat:42.384264, lng:-71.077000}
-            orangeStations["Community College"] = {lat:42.373689, lng:-71.069685}
-            orangeStations["North Station"] = {lat:42.366413, lng:-71.062144}
-            orangeStations["Haymarket"] = {lat:42.362167, lng:-71.057792}
-            orangeStations["State"] = {lat:42.358211, lng:-71.057857}
-            orangeStations["Downtown Crossing"] = {lat:42.355518, lng:-71.060225};
-            orangeStations["Chinatown"] = {lat:42.352645, lng:-71.062398}
-            orangeStations["Tufts Medical Center"] = {lat:42.349664, lng:-71.063951}
-            orangeStations["Back Bay"] = {lat:42.347403, lng:-71.075565}
-            orangeStations["Massachusetts Avenue"] = {lat:42.341518, lng:-71.083553}
-            orangeStations["Ruggles"] = {lat:42.336646, lng:-71.089398}
-            orangeStations["Roxbury Crossing"] = {lat:42.331336, lng:-71.095472}
-            orangeStations["Jackson Square"] = {lat:42.323116, lng:-71.099783}
-            orangeStations["Stony Brook"] = {lat:42.317242, lng:-71.104203}
-            orangeStations["Green Street"] = {lat:42.310396, lng:-71.107549}
-            orangeStations["Forest Hills"] = {lat: 42.300815, lng:-71.113725}
+        // Orange line stations and polyline
+        orangeStations = {}
+        orangeStations["Oak Grove"] = {lat:42.436683, lng:-71.071097}
+        orangeStations["Malden Center"] = {lat:42.426847, lng:-71.074291}
+        orangeStations["Wellington"] = {lat:42.401665, lng:-71.077135}
+        orangeStations["Assembly"] = {lat:42.392739, lng:-71.077276}
+        orangeStations["Sullivan Sqaure"] = {lat:42.384264, lng:-71.077000}
+        orangeStations["Community College"] = {lat:42.373689, lng:-71.069685}
+        orangeStations["North Station"] = {lat:42.366413, lng:-71.062144}
+        orangeStations["Haymarket"] = {lat:42.362167, lng:-71.057792}
+        orangeStations["State"] = {lat:42.358211, lng:-71.057857}
+        orangeStations["Downtown Crossing"] = {lat:42.355518, lng:-71.060225};
+        orangeStations["Chinatown"] = {lat:42.352645, lng:-71.062398}
+        orangeStations["Tufts Medical Center"] = {lat:42.349664, lng:-71.063951}
+        orangeStations["Back Bay"] = {lat:42.347403, lng:-71.075565}
+        orangeStations["Massachusetts Avenue"] = {lat:42.341518, lng:-71.083553}
+        orangeStations["Ruggles"] = {lat:42.336646, lng:-71.089398}
+        orangeStations["Roxbury Crossing"] = {lat:42.331336, lng:-71.095472}
+        orangeStations["Jackson Square"] = {lat:42.323116, lng:-71.099783}
+        orangeStations["Stony Brook"] = {lat:42.317242, lng:-71.104203}
+        orangeStations["Green Street"] = {lat:42.310396, lng:-71.107549}
+        orangeStations["Forest Hills"] = {lat: 42.300815, lng:-71.113725}
 
 
-            // Blue line stations and polyline
+        // Blue line stations and polyline
 
-            // Commuter Rail stations and polyline
+        // Commuter Rail stations and polyline
+
+        // Creating the map
+        request = new XMLHttpRequest();
+        myLoc = new google.maps.LatLng(redStations["South Station"]);
+
+        options = {
+            zoom: 13,
+            center: myLoc,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        img = "t.png";
+
+        infowindow = new google.maps.InfoWindow();
+        function init(){
+            map = new google.maps.Map(document.getElementById("mbta_map"), options);
+            markers(map);
+            redPolyline(map);
+        }
+
+        function markers(map){
+            for(var i = 0; i < redStationNames.length; i++){
+                var marker = new google.maps.Marker({
+                    position: redStations[redStationNames[i]],
+                    title: redStationNames[i],
+                    icon: img
+                });
+                marker.setMap(map);
+            }
         }
     </script>
 </head>
