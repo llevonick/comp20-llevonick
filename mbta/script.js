@@ -101,7 +101,7 @@ function orangePolyline(map){
     orangeLinePath = new google.maps.Polyline({
         path: orangeLine,
         geodesic: true,
-        strokeColor: '#FFA64F',
+        strokeColor: '#E1981F',
         strokeOpactiy: 1,
         strokeWeight: 5
     });
