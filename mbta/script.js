@@ -210,7 +210,96 @@ purpleStations["Newburyport"] = {lat:42.797263, lng:-70.877693};
 
 purpleStationNames = Object.keys(purpleStations);
 
+purpSegA = [];
+purpSegB = [];
+purpSegC = [];
+purpSegD = [];
+purpSegE = [];
 
+purpSegB.push(purpleStations["North"]);
+purpSegC.push(purpleStations["North"]);
+purpSegD.push(purpleStations["North"]);
+purpSegE.push(purpleStations["Beverly"]);
+
+function purplePolyline(map){
+    SegDone = 0;
+
+    for(var i = 0; i < purpleStationNames.length; i++){
+        if(SegDone == 0){
+            purpSegA.push(purpleStations[purpleStationNames[i]]);
+            if(purpleStationNames[i] == "Wachusett"){
+                SegDone += 1;
+            }
+        }
+        else if(SegDone == 1){
+            purpSegB.push(purpleStations[purpleStationNames[i]]);
+            if(purpleStationNames[i] == "Lowell"){
+                SegDone += 1;
+            }
+        }
+        else if(SegDone == 2){
+            purpSegC.push(purpleStations[purpleStationNames[i]]);
+            if(purpleStationNames[i] == "Haverhill"){
+                SegDone += 1;
+            }
+        }
+        else if(SegDone == 3){
+            purpSegD.push(purpleStations[purpleStationNames[i]]);
+            if(purpleStationNames[i] == "Rockport"){
+                SegDone += 1;
+            }
+        }
+        else{
+            purpSegE.push(purpleStations[purpleStationNames[i]]);
+        }
+    }
+
+    PurplePathA = new google.maps.Polyline({
+        path: purpSegA,
+        geodesic: true,
+        strokeColor: '#C3A5CC',
+        strokeOpactiy: 1,
+        strokeWeight: 5
+    });
+
+    PurplePathB = new google.maps.Polyline({
+        path: purpSegB,
+        geodesic: true,
+        strokeColor: '#C3A5CC',
+        strokeOpactiy: 1,
+        strokeWeight: 5
+    });
+
+    PurplePathC = new google.maps.Polyline({
+        path: purpSegC,
+        geodesic: true,
+        strokeColor: '#C3A5CC',
+        strokeOpactiy: 1,
+        strokeWeight: 5
+    });
+
+    PurplePathD = new google.maps.Polyline({
+        path: purpSegD,
+        geodesic: true,
+        strokeColor: '#C3A5CC',
+        strokeOpactiy: 1,
+        strokeWeight: 5
+    });
+
+    PurplePathE = new google.maps.Polyline({
+        path: purpSegE,
+        geodesic: true,
+        strokeColor: '#C3A5CC',
+        strokeOpactiy: 1,
+        strokeWeight: 5
+    });
+
+    PurplePathA.setMap(map);
+    PurplePathB.setMap(map);
+    PurplePathC.setMap(map);
+    PurplePathD.setMap(map);
+    PurplePathE.setMap(map);
+}
 
 
 // Creating the map
@@ -235,6 +324,7 @@ function init(){
     redPolyline(map);
     orangePolyline(map);
     bluePolyline(map);
+    purplePolyline(map);
 }
 
 function markers(map, stations, names){
