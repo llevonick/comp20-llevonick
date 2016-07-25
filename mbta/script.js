@@ -565,7 +565,10 @@ options = {
     mapTypeId: google.maps.MapTypeId.ROADMAP
 };
 
-img = "tmarker.png";
+img = {
+    url: "tmarker.png",
+    scaledSize: new google.maps.Size(15, 20)
+}
 
 infowindow = new google.maps.InfoWindow();
 function init(){
