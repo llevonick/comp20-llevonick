@@ -144,7 +144,7 @@ function bluePolyline(map){
     blueLinePath.setMap(map);
 }
 
-// Commuter Rail stations and polyline
+// Top half of Commuter Rail stations and polyline
 purpleStations = {}
 purpleStations["North"] = {lat:42.366413, lng:-71.062144};
 purpleStations["Porter Sqaure"] = {lat:42.3884, lng:-71.11914899999999};
@@ -300,6 +300,97 @@ function purplePolyline(map){
     PurplePathD.setMap(map);
     PurplePathE.setMap(map);
 }
+
+// Bottom half of Commuter Rail stations and polyline
+comRailStations = {}
+comRailStations["South Station"] = {lat:42.352271, lng:-71.05524200000001};
+comRailStations["Back Bay"] = {lat:42.347403, lng:-71.075565};
+comRailStations["Yawkey"] = {lat:42.347512, lng:-71.099848};
+comRailStations["Newtonville"] = {lat:42.351607, lng:-71.207333};
+comRailStations["West Newton"] = {lat:42.347902, lng:-71.230628};
+comRailStations["Auburndale"] = {lat:42.345935, lng:-71.250283};
+comRailStations["Wellesley Farms"] = {lat:42.323253, lng:-71.271998};
+comRailStations["Wellesley Hills"] = {lat:42.310305, lng:-71.276976};
+comRailStations["Wellesley Sqaure"] = {lat:42.297562, lng:-71.294207};
+comRailStations["Natick Center"] = {lat:42.285784, lng:-71.347079};
+comRailStations["West Natick"] = {lat:42.283117, lng:-71.391753};
+comRailStations["Framingham"] = {lat:42.276132, lng:-71.419648};
+comRailStations["Ashland"] = {lat:42.261619, lng:-71.482477};
+comRailStations["Southborough"] = {lat:42.267050, lng:-71.523933};
+comRailStations["Westborough"] = {lat:42.269654, lng:-71.647057};
+comRailStations["Grafton"] = {lat:42.246622, lng:-71.685322};
+comRailStations["Worcester"] = {lat:42.261258, lng:-71.794917};
+//beginning of seg B (off of Back Bay)
+comRailStations["Ruggles"] = {lat:42.336646, lng:-71.089398};
+comRailStations["Hyde Park"] = {lat:42.254762, lng:-71.125569};
+comRailStations["Readville"] = {lat:42.238365, lng:-71.133256};
+comRailStations["Endicott"] = {lat:42.233281, lng:-71.158447};
+comRailStations["Dedham Corp Center"] = {lat:42.227037, lng:-71.174197};
+comRailStations["Islington"] = {lat:42.221063, lng:-71.183939};
+comRailStations["Norwood Depot"] = {lat:42.196403, lng:-71.196910};
+comRailStations["Norwood Central"] = {lat:42.188741, lng:-71.199871};
+comRailStations["Windsor Gardens"] = {lat:42.171957, lng:-71.219602};
+comRailStations["Plimptonville"] = {lat:42.159154, lng:-71.236124};
+comRailStations["Walpole"] = {lat:42.145298, lng:-71.257925};
+comRailStations["Norfolk"] = {lat:42.120801, lng:-71.325141};
+comRailStations["Franklin/Dean College"] = {lat:42.083339, lng:-71.396445};
+comRailStations["Forge Park/495"] = {lat:42.089837, lng:-71.439103};
+//beginning of seg C (off of Ruggles)
+comRailStations["Forest Hills"] = {lat: 42.300815, lng:-71.113725};
+comRailStations["Roslindale Village"] = {lat:42.287522, lng:-71.130271};
+comRailStations["Bellevue"] = {lat:42.286637, lng:-71.145575};
+comRailStations["Highland"] = {lat:42.285002, lng:-71.153998};
+comRailStations["West Roxbury"] = {lat:42.281366, lng:-71.160113};
+comRailStations["Hersey"] = {lat:42.275675, lng:-71.215517};
+comRailStations["Needham Junction"] = {lat:42.273230, lng:-71.235601};
+comRailStations["Needham Center"] = {lat:42.281061, lng:-71.237591};
+comRailStations["Needham Heights"] = {lat:42.293439, lng:-71.235976};
+//beginning of seg D (off of South)
+comRailStations["Newmarket"] = {lat:42.326725, lng:-71.066303};
+comRailStations["Uphams Corner"] = {lat:42.319137, lng:-71.068701};
+comRailStations["Four Corners/Geneva"] = {lat:42.305045, lng:-71.076831};
+comRailStations["Talbot Avenue"] = {lat:42.292255, lng:-71.078143};
+comRailStations["Morton Street"] = {lat:42.280984, lng:-71.085470};
+comRailStations["Fairmount"] = {lat:42.253660, lng:-71.119304};
+comRailStations["Readville"] = {lat:42.238365, lng:-71.133256};
+comRailStations["Route 128"] = {lat:42.210308, lng:-71.147569};
+comRailStations["Canton Center"] = {lat:42.157069, lng:-71.146310};
+comRailStations["Stoughton"] = {lat:42.123910, lng:-71.103151};
+//beginning of seg E (off of Canton Center)
+comRailStations["Sharon"] = {lat:42.124703, lng:-71.184070};
+comRailStations["Mansfield"] = {lat:42.032406, lng:-71.220027};
+comRailStations["Attleboro"] = {lat:41.940768, lng:-71.285098};
+comRailStations["South Attleboro"] = {lat:41.897938, lng:-71.354031};
+comRailStations["Providence"] = {lat:41.829222, lng:-71.413116};
+comRailStations["TF Green"] = {lat:41.725714, lng:-71.436812};
+comRailStations["Wickford Junction"] = {lat:41.580886, lng:-71.491469};
+//beginning of seg F (off of South)
+comRailStations["JFK/UMass"] = {lat:42.320685, lng:-71.052391};
+comRailStations["Quincy Center"] = {lat:42.251809, lng:-71.005409};
+comRailStations["Braintree"] = {lat:42.2078543, lng:-71.0011385};
+comRailStations["Holbrook/Randolph"] = {lat:42.156365, lng:-71.027333};
+comRailStations["Montello"] = {lat:42.106539, lng:-71.021993};
+comRailStations["Brockton"] = {lat:42.085737, lng:-71.016591};
+comRailStations["Campello"] = {lat:42.060962, lng:-71.011095};
+comRailStations["Bridgewater"] = {lat:41.984918, lng:-70.965393};
+comRailStations["Middleborough/Lakeville"] = {lat:41.878219, lng:-70.918191};
+//beginning of seg G (off of Braintree)
+comRailStations["South Weymouth"] = {lat:42.154858, lng:-70.953259};
+comRailStations["Abington"] = {lat:42.107158, lng:-70.934398};
+comRailStations["Whitman"] = {lat:42.082765, lng:-70.923401};
+comRailStations["Hanson"] = {lat:42.043975, lng:-70.882438};
+comRailStations["Halifax"] = {lat:42.014751, lng:-70.824245};
+comRailStations["Kingston"] = {lat:41.977627, lng:-70.721779};
+//beginning of seg H (off of Halifax)
+comRailStations["Plymouth"] = {lat:41.981232, lng:-70.690365};
+//beginning of seg I (off of Quincy Center)
+comRailStations["Weymouth Landing/East Braintree"] = {lat:42.221463, lng:-70.968119};
+comRailStations["East Weymouth"] = {lat:42.219088, lng:-70.921403};
+comRailStations["West Hingham"] = {lat:42.235835, lng:-70.902649};
+comRailStations["Nantasket Junction"] = {lat:42.244986, lng:-70.869218};
+comRailStations["Cohasset"] = {lat:42.243461, lng:-70.837461};
+comRailStations["North Scituate"] = {lat:42.219597, lng:-70.788666};
+comRailStations["Greenbush"] = {lat:42.178744, lng:-70.746459};
 
 
 // Creating the map
