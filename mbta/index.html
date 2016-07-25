@@ -134,6 +134,8 @@
         blueStations["Government Center"] = {lat:42.359703, lng:-71.059228}
         blueStations["Bowdoin"] = {lat:42.361368, lng:-71.062039}
 
+        blueStationNames = Object.keys(blueStations);
+
         // Commuter Rail stations and polyline
 
         // Creating the map
@@ -153,6 +155,7 @@
             map = new google.maps.Map(document.getElementById("mbta_map"), options);
             markers(map, redStations, redStationNames);
             markers(map, orangeStations, orangeStationNames);
+            markers(map, blueStations, blueStationNames);
             redPolyline(map);
             orangePolyline(map);
         }
