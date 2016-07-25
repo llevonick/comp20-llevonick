@@ -345,14 +345,13 @@ comRailStations["Hersey"] = {lat:42.275675, lng:-71.215517};
 comRailStations["Needham Junction"] = {lat:42.273230, lng:-71.235601};
 comRailStations["Needham Center"] = {lat:42.281061, lng:-71.237591};
 comRailStations["Needham Heights"] = {lat:42.293439, lng:-71.235976};
-//beginning of seg D (off of South)
+//beginning of seg D (off of South Station)
 comRailStations["Newmarket"] = {lat:42.326725, lng:-71.066303};
 comRailStations["Uphams Corner"] = {lat:42.319137, lng:-71.068701};
 comRailStations["Four Corners/Geneva"] = {lat:42.305045, lng:-71.076831};
 comRailStations["Talbot Avenue"] = {lat:42.292255, lng:-71.078143};
 comRailStations["Morton Street"] = {lat:42.280984, lng:-71.085470};
 comRailStations["Fairmount"] = {lat:42.253660, lng:-71.119304};
-comRailStations["Readville"] = {lat:42.238365, lng:-71.133256};
 comRailStations["Route 128"] = {lat:42.210308, lng:-71.147569};
 comRailStations["Canton Center"] = {lat:42.157069, lng:-71.146310};
 comRailStations["Stoughton"] = {lat:42.123910, lng:-71.103151};
@@ -364,7 +363,7 @@ comRailStations["South Attleboro"] = {lat:41.897938, lng:-71.354031};
 comRailStations["Providence"] = {lat:41.829222, lng:-71.413116};
 comRailStations["TF Green"] = {lat:41.725714, lng:-71.436812};
 comRailStations["Wickford Junction"] = {lat:41.580886, lng:-71.491469};
-//beginning of seg F (off of South)
+//beginning of seg F (off of South Station)
 comRailStations["JFK/UMass"] = {lat:42.320685, lng:-71.052391};
 comRailStations["Quincy Center"] = {lat:42.251809, lng:-71.005409};
 comRailStations["Braintree"] = {lat:42.2078543, lng:-71.0011385};
@@ -394,6 +393,168 @@ comRailStations["Greenbush"] = {lat:42.178744, lng:-70.746459};
 
 comRailStationNames = Object.keys(comRailStations);
 
+comSegA = [];
+comSegB = [];
+comSegC = [];
+comSegD = [];
+comSegE = [];
+comSegF = [];
+comSegG = [];
+comSegH = [];
+comSegI = [];
+
+comSegB.push(comRailStations["Back Bay"]);
+comSegC.push(comRailStations["Ruggles"]);
+comSegD.push(comRailStations["South Station"]);
+comSegE.push(comRailStations["Canton Center"]);
+comSegF.push(comRailStations["South Station"]);
+comSegG.push(comRailStations["Braintree"]);
+comSegH.push(comRailStations["Halifax"]);
+comSegI.push(comRailStations["Quincy Center"]);
+
+function comRailPolyline(map){
+    var SegDone = 0;
+
+    for(var i = 0; i < comRailStationNames.length; i++){
+        if(SegDone == 0){
+            comSegA.push(comRailStations[comRailStationNames[i]]);
+            if(comRailStationNames[i] == "Worcester"){
+                SegDone += 1;
+            }
+        }
+        else if(SegDone == 1){
+            comSegB.push(comRailStations[comRailStationNames[i]]);
+            if(comRailStationNames[i] == "Forge Park/495"){
+                SegDone += 1;
+            }
+        }
+        else if(SegDone == 2){
+            comSegC.push(comRailStations[comRailStationNames[i]]);
+            if(comRailStationNames[i] == "Needham Heights"){
+                SegDone += 1;
+            }
+        }
+        else if(SegDone == 3){
+            comSegD.push(comRailStations[comRailStationNames[i]]);
+            if(comRailStationNames[i] == "Fairmount"){
+                comSegD.push(comRailStations["Readville"]);
+            }
+            else if(comRailStationNames[i] == "Stoughton"){
+                SegDone += 1;
+            }
+        }
+        else if(SegDone == 4){
+            comSegE.push(comRailStations[comRailStationNames[i]]);
+            if(comRailStationNames[i] == "Wickford Junction"){
+                SegDone += 1;
+            }
+        }
+        else if(SegDone == 5){
+            comSegF.push(comRailStations[comRailStationNames[i]]);
+            if(comRailStationNames[i] == "Middleborough/Lakeville"){
+                SegDone += 1;
+            }
+        }
+        else if(SegDone == 6){
+            comSegG.push(comRailStations[comRailStationNames[i]]);
+            if(comRailStationNames[i] == "Kingston"){
+                SegDone += 1;
+            }
+        }
+        else if(SegDone == 7){
+            comSegH.push(comRailStations[comRailStationNames[i]]);
+            if(comRailStationNames[i] == "Plymouth"){
+                SegDone += 1;
+            }
+        }
+        else{
+            comSegI.push(comRailStations[comRailStationNames[i]]);
+        }
+    }
+
+    comRailPathA = new google.maps.Polyline({
+        path: comSegA,
+        geodesic: true,
+        strokeColor: '#C3A5CC',
+        strokeOpactiy: 1,
+        strokeWeight: 5
+    });
+
+    comRailPathB = new google.maps.Polyline({
+        path: comSegB,
+        geodesic: true,
+        strokeColor: '#C3A5CC',
+        strokeOpactiy: 1,
+        strokeWeight: 5
+    });
+
+    comRailPathC = new google.maps.Polyline({
+        path: comSegC,
+        geodesic: true,
+        strokeColor: '#C3A5CC',
+        strokeOpactiy: 1,
+        strokeWeight: 5
+    });
+
+    comRailPathD = new google.maps.Polyline({
+        path: comSegD,
+        geodesic: true,
+        strokeColor: '#C3A5CC',
+        strokeOpactiy: 1,
+        strokeWeight: 5
+    });
+
+    comRailPathE = new google.maps.Polyline({
+        path: comSegE,
+        geodesic: true,
+        strokeColor: '#C3A5CC',
+        strokeOpactiy: 1,
+        strokeWeight: 5
+    });
+
+    comRailPathF = new google.maps.Polyline({
+        path: comSegF,
+        geodesic: true,
+        strokeColor: '#C3A5CC',
+        strokeOpactiy: 1,
+        strokeWeight: 5
+    });
+
+    comRailPathG = new google.maps.Polyline({
+        path: comSegG,
+        geodesic: true,
+        strokeColor: '#C3A5CC',
+        strokeOpactiy: 1,
+        strokeWeight: 5
+    });
+
+    comRailPathH = new google.maps.Polyline({
+        path: comSegH,
+        geodesic: true,
+        strokeColor: '#C3A5CC',
+        strokeOpactiy: 1,
+        strokeWeight: 5
+    });
+
+    comRailPathI = new google.maps.Polyline({
+        path: comSegI,
+        geodesic: true,
+        strokeColor: '#C3A5CC',
+        strokeOpactiy: 1,
+        strokeWeight: 5
+    });
+
+    comRailPathA.setMap(map);
+    comRailPathB.setMap(map);
+    comRailPathC.setMap(map);
+    comRailPathD.setMap(map);
+    comRailPathE.setMap(map);
+    comRailPathF.setMap(map);
+    comRailPathG.setMap(map);
+    comRailPathH.setMap(map);
+    comRailPathI.setMap(map);
+}
+
 // Creating the map
 request = new XMLHttpRequest();
 myLoc = new google.maps.LatLng(redStations["South Station"]);
@@ -418,6 +579,7 @@ function init(){
     orangePolyline(map);
     bluePolyline(map);
     purplePolyline(map);
+    comRailPolyline(map);
 }
 
 function markers(map, stations, names){
