@@ -136,6 +136,24 @@
 
         blueStationNames = Object.keys(blueStations);
 
+        blueLine = [];
+
+        function bluePolyline(map){
+            for(var i = 0; i < blueStationNames.length; i++){
+                blueLine.push(blueStations[blueStationNames[i]]);
+            }
+
+            blueLinePath = new google.maps.Polyline({
+                path: blueLine,
+                geodesic: true,
+                strokeColor: '#00008F',
+                strokeOpactiy: 1,
+                strokeWeight: 5
+            });
+
+            blueLinePath.setMap(map);
+        }
+
         // Commuter Rail stations and polyline
 
         // Creating the map
@@ -158,6 +176,7 @@
             markers(map, blueStations, blueStationNames);
             redPolyline(map);
             orangePolyline(map);
+            bluePolyline(map);
         }
 
         function markers(map, stations, names){
