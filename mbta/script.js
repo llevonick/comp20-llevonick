@@ -578,11 +578,12 @@ function init(){
     markers(map, blueStations, blueStationNames);
     markers(map, purpleStations, purpleStationNames);
     markers(map, comRailStations, comRailStationNames);
-    redPolyline(map);
-    orangePolyline(map);
-    bluePolyline(map);
     purplePolyline(map);
     comRailPolyline(map);
+    orangePolyline(map);
+    bluePolyline(map);
+    redPolyline(map);
+
 }
 
 function markers(map, stations, names){
