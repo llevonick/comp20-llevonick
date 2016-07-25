@@ -222,7 +222,7 @@ purpSegD.push(purpleStations["North"]);
 purpSegE.push(purpleStations["Beverly"]);
 
 function purplePolyline(map){
-    SegDone = 0;
+    var SegDone = 0;
 
     for(var i = 0; i < purpleStationNames.length; i++){
         if(SegDone == 0){
@@ -392,6 +392,7 @@ comRailStations["Cohasset"] = {lat:42.243461, lng:-70.837461};
 comRailStations["North Scituate"] = {lat:42.219597, lng:-70.788666};
 comRailStations["Greenbush"] = {lat:42.178744, lng:-70.746459};
 
+comRailStationNames = Object.keys(comRailStations);
 
 // Creating the map
 request = new XMLHttpRequest();
@@ -412,6 +413,7 @@ function init(){
     markers(map, orangeStations, orangeStationNames);
     markers(map, blueStations, blueStationNames);
     markers(map, purpleStations, purpleStationNames);
+    markers(map, comRailStations, comRailStationNames);
     redPolyline(map);
     orangePolyline(map);
     bluePolyline(map);
