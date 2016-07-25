@@ -208,6 +208,7 @@ purpleStations["Ipswich"] = {lat:42.676981, lng:-70.840571};
 purpleStations["Rowley"] = {lat:42.726938, lng:-70.859111};
 purpleStations["Newburyport"] = {lat:42.797263, lng:-70.877693};
 
+purpleStationNames = Object.keys(purpleStations);
 
 
 
@@ -230,6 +231,7 @@ function init(){
     markers(map, redStations, redStationNames);
     markers(map, orangeStations, orangeStationNames);
     markers(map, blueStations, blueStationNames);
+    markers(map, purpleStations, purpleStationNames);
     redPolyline(map);
     orangePolyline(map);
     bluePolyline(map);
