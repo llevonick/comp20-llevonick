@@ -1,1 +1,18 @@
-/* Your CSS here... */
+h1{
+font-family:Goudy Old Style;
+font-weight:bold;
+}
+
+.msg{
+font-family:Goudy Old Style;
+background-color:#E1FFEE;
+padding:5px;
+box-shadow: 10px 5px 5px black;
+border-radius:10px;
+}
+
+p{
+font-family:Goudy Old Style;
+}
+
+body{background-color:#B8C6C6;}
