@@ -16,9 +16,6 @@ function parse(){
 		else if(request.readyState == 4 && request.status != 200){
 			document.getElementById("messages").innerHTML = "<p>Sorry something went wrong.</p>"
 		}
-		else{
-			console.log("In progress...")
-		}
 	};
 
 	request.send(null);
