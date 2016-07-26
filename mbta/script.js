@@ -571,6 +571,7 @@ img = {
 }
 
 infowindow = new google.maps.InfoWindow();
+
 function init(){
     map = new google.maps.Map(document.getElementById("mbta_map"), options);
     markers(map, redStations, redStationNames);
@@ -583,7 +584,6 @@ function init(){
     orangePolyline(map);
     bluePolyline(map);
     redPolyline(map);
-
 }
 
 function markers(map, stations, names){
