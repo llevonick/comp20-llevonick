@@ -7,12 +7,15 @@ font-weight:bold;
 font-family:Goudy Old Style;
 background-color:#E1FFEE;
 padding:5px;
-box-shadow: 10px 5px 5px black;
+box-shadow:10px 5px 5px black;
 border-radius:10px;
 }
 
-p{
-font-family:Goudy Old Style;
+#name{
+font-size: 11px;
+padding:5px;
 }
+
+p{font-family:Goudy Old Style;}
 
 body{background-color:#B8C6C6;}
