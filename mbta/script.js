@@ -178,6 +178,7 @@ purpleStations["Lowell"] = {lat:42.637100, lng:-71.315359};
 purpleStations["Malden Center"] = {lat:42.426847, lng:-71.074291};
 purpleStations["Wyoming Hill"] = {lat:42.451719, lng:-71.069379};
 purpleStations["Melrose/Cedar Park"] = {lat:42.458728, lng:-71.069864};
+purpleStations["Melrose Highlands"] = {lat:42.469465, lng:-71.068297};
 purpleStations["Greenwood"] = {lat:42.483001, lng:-71.067248};
 purpleStations["Wakefield"] = {lat:42.502180, lng:-71.075612};
 purpleStations["Reading"] = {lat:42.521604, lng:-71.107477};
@@ -353,15 +354,16 @@ comRailStations["Talbot Avenue"] = {lat:42.292255, lng:-71.078143};
 comRailStations["Morton Street"] = {lat:42.280984, lng:-71.085470};
 comRailStations["Fairmount"] = {lat:42.253660, lng:-71.119304};
 comRailStations["Route 128"] = {lat:42.210308, lng:-71.147569};
+comRailStations["Canton Junction"] = {lat:42.163494, lng:-71.153527};
 comRailStations["Canton Center"] = {lat:42.157069, lng:-71.146310};
 comRailStations["Stoughton"] = {lat:42.123910, lng:-71.103151};
-//beginning of seg E (off of Canton Center)
+//beginning of seg E (off of Canton Junction)
 comRailStations["Sharon"] = {lat:42.124703, lng:-71.184070};
 comRailStations["Mansfield"] = {lat:42.032406, lng:-71.220027};
 comRailStations["Attleboro"] = {lat:41.940768, lng:-71.285098};
 comRailStations["South Attleboro"] = {lat:41.897938, lng:-71.354031};
 comRailStations["Providence"] = {lat:41.829222, lng:-71.413116};
-comRailStations["TF Green"] = {lat:41.725714, lng:-71.436812};
+comRailStations["T.F. Green"] = {lat:41.725714, lng:-71.436812};
 comRailStations["Wickford Junction"] = {lat:41.580886, lng:-71.491469};
 //beginning of seg F (off of South Station)
 comRailStations["JFK/UMass"] = {lat:42.320685, lng:-71.052391};
@@ -406,7 +408,7 @@ comSegI = [];
 comSegB.push(comRailStations["Back Bay"]);
 comSegC.push(comRailStations["Ruggles"]);
 comSegD.push(comRailStations["South Station"]);
-comSegE.push(comRailStations["Canton Center"]);
+comSegE.push(comRailStations["Canton Junction"]);
 comSegF.push(comRailStations["South Station"]);
 comSegG.push(comRailStations["Braintree"]);
 comSegH.push(comRailStations["Halifax"]);
