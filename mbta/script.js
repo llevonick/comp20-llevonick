@@ -594,8 +594,6 @@ function markers(map, stations, names){
     }
 }
 
-
-
 function getLocation(){
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(function(position){
@@ -632,26 +630,4 @@ function getLocation(){
         myMarker.setMap(map);*/
     }
 }
-
-/*function myCurrentLocation(position){
-    myLat = position.coords.latitude;
-    myLng = position.coords.longitude;
-    myLoc = new google.maps.LatLng(myLat, myLng);
-    console.log(myLoc);
-    options = {
-        zoom: 13,
-        center: myLoc,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    };
-    storeOptions(options);
-}
-
-function storeOptions(updatedOptions){
-    options = updatedOptions;
-    console.log(options);
-}
-
-/*function fail(){
-
-}*/
 
