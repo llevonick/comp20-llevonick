@@ -622,9 +622,10 @@ function getLocation(){
     }
     else{
         alert("Geolocation is not avaliable.")
+        myLoc = defaultLoc;
         options = {
             zoom: 13,
-            center: defaultLoc,
+            center: myLoc,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         init();
