@@ -569,8 +569,13 @@ defaultLoc = new google.maps.LatLng(redStations["South Station"]);
 
 infowindow = new google.maps.InfoWindow();
 
+bounds = new google.maps.LatLngBounds();
+
 function init(){
     map = new google.maps.Map(document.getElementById("mbta_map"), options);
+    initZoom(map);
+
+
     markers(map, redStations, redStationNames);
     markers(map, orangeStations, orangeStationNames);
     markers(map, blueStations, blueStationNames);
@@ -629,5 +634,11 @@ function getLocation(){
         })
         myMarker.setMap(map);*/
     }
+}
+
+function initZoom(map){
+    bounds.extend(myLoc);
+    bounds.extend(defaultLoc);
+    map.fitBounds(bounds);
 }
 
