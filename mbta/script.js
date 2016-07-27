@@ -579,6 +579,7 @@ distances = [];
 function init(){
     map = new google.maps.Map(document.getElementById("mbta_map"), options);
     initZoom(map);
+    minSta = compareDistance();
     myLocationMarker(map);
     markers(map, redStations, redStationNames);
     markers(map, orangeStations, orangeStationNames);
@@ -590,6 +591,7 @@ function init(){
     orangePolyline(map);
     bluePolyline(map);
     redPolyline(map);
+    closestRedPolyline(map);
 }
 
 function markers(map, stations, names){
@@ -636,8 +638,8 @@ function myLocationMarker(map){
         title:"My Location",
         icon: meImg
     });
-    var minStation = compareDistance();
-    infoText = "Closest Red Line Station: " + redStationNames[minStation] + " Distance in miles: " + distances[minStation].toFixed(2) + "m";
+
+    infoText = "Closest Red Line Station: " + redStationNames[minSta] + " Distance in miles: " + distances[minSta].toFixed(2) + "m";
     infowindow = new google.maps.InfoWindow({
         content: infoText
     });
@@ -653,6 +655,22 @@ function initZoom(map){
     bounds.extend(myLoc);
     bounds.extend(defaultLoc);
     map.fitBounds(bounds);
+}
+
+function closestRedPolyline(map){
+    closestRed = [];
+    closestRed.push(myLoc);
+    closestRed.push(redStations[redStationNames[minSta]]);
+
+    closestRedPath = new google.maps.Polyline({
+        path: closestRed,
+        geodesic: true,
+        strokeColor: '#A7D6C1',
+        strokeOpactiy: 1,
+        strokeWeight: 5
+    });
+
+    closestRedPath.setMap(map);
 }
 
 function compareDistance(){
