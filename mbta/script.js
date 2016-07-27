@@ -636,6 +636,9 @@ function myLocationMarker(map){
         title:"My Location",
         icon: meImg
     });
+    myMarker.addListener('click', function(){
+        infowindow.open(map, myMarker);
+    });
     myMarker.setMap(map);
 }
 
