@@ -565,6 +565,11 @@ img = {
     scaledSize: new google.maps.Size(15, 20)
 }
 
+meImg = {
+    url: "mepointer.png",
+    scaledSize: new google.maps.Size(60, 45)
+}
+
 defaultLoc = new google.maps.LatLng(redStations["South Station"]);
 
 infowindow = new google.maps.InfoWindow();
@@ -628,7 +633,8 @@ function getLocation(){
 function myLocationMarker(map){
     myMarker = new google.maps.Marker({
         position: myLoc,
-        title:"My Location"
+        title:"My Location",
+        icon: meImg
     });
     myMarker.setMap(map);
 }
