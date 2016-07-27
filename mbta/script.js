@@ -574,8 +574,7 @@ bounds = new google.maps.LatLngBounds();
 function init(){
     map = new google.maps.Map(document.getElementById("mbta_map"), options);
     initZoom(map);
-
-
+    myLocationMarker(map);
     markers(map, redStations, redStationNames);
     markers(map, orangeStations, orangeStationNames);
     markers(map, blueStations, blueStationNames);
@@ -612,12 +611,6 @@ function getLocation(){
             };
 
             init();
-
-            /*myMarker = new google.maps.Marker({
-                position: myLoc,
-                title:"My Location"
-            })
-            myMarker.setMap(map);*/
         });
     }
     else{
@@ -629,12 +622,15 @@ function getLocation(){
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         init();
-        /*myMarker = new google.maps.Marker({
-            position: defaultLoc,
-            title:"My Location"
-        })
-        myMarker.setMap(map);*/
     }
+}
+
+function myLocationMarker(map){
+    myMarker = new google.maps.Marker({
+        position: myLoc,
+        title:"My Location"
+    });
+    myMarker.setMap(map);
 }
 
 function initZoom(map){
