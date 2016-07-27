@@ -559,18 +559,13 @@ function comRailPolyline(map){
 
 // Creating the map
 request = new XMLHttpRequest();
-myLoc = new google.maps.LatLng(redStations["South Station"]);
-
-options = {
-    zoom: 13,
-    center: myLoc,
-    mapTypeId: google.maps.MapTypeId.ROADMAP
-};
 
 img = {
     url: "tmarker.png",
     scaledSize: new google.maps.Size(15, 20)
 }
+
+defaultLoc = new google.maps.LatLng(redStations["South Station"]);
 
 infowindow = new google.maps.InfoWindow();
 
@@ -598,3 +593,65 @@ function markers(map, stations, names){
         marker.setMap(map);
     }
 }
+
+
+
+function getLocation(){
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(function(position){
+            myLat = position.coords.latitude;
+            myLng = position.coords.longitude;
+            myLoc = new google.maps.LatLng(myLat, myLng);
+            options = {
+                zoom: 13,
+                center: myLoc,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+
+            init();
+
+            /*myMarker = new google.maps.Marker({
+                position: myLoc,
+                title:"My Location"
+            })
+            myMarker.setMap(map);*/
+        });
+    }
+    else{
+        alert("Geolocation is not avaliable.")
+        options = {
+            zoom: 13,
+            center: defaultLoc,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        init();
+        /*myMarker = new google.maps.Marker({
+            position: defaultLoc,
+            title:"My Location"
+        })
+        myMarker.setMap(map);*/
+    }
+}
+
+/*function myCurrentLocation(position){
+    myLat = position.coords.latitude;
+    myLng = position.coords.longitude;
+    myLoc = new google.maps.LatLng(myLat, myLng);
+    console.log(myLoc);
+    options = {
+        zoom: 13,
+        center: myLoc,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    };
+    storeOptions(options);
+}
+
+function storeOptions(updatedOptions){
+    options = updatedOptions;
+    console.log(options);
+}
+
+/*function fail(){
+
+}*/
+
