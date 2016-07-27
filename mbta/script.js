@@ -572,8 +572,6 @@ meImg = {
 
 defaultLoc = new google.maps.LatLng(redStations["South Station"]);
 
-infowindow = new google.maps.InfoWindow();
-
 bounds = new google.maps.LatLngBounds();
 
 function init(){
@@ -636,9 +634,15 @@ function myLocationMarker(map){
         title:"My Location",
         icon: meImg
     });
+    
+    infowindow = new google.maps.InfoWindow({
+        content: "My location"
+    });
+    
     myMarker.addListener('click', function(){
         infowindow.open(map, myMarker);
     });
+    
     myMarker.setMap(map);
 }
 
