@@ -574,6 +574,8 @@ defaultLoc = new google.maps.LatLng(redStations["South Station"]);
 
 bounds = new google.maps.LatLngBounds();
 
+distances = [];
+
 function init(){
     map = new google.maps.Map(document.getElementById("mbta_map"), options);
     initZoom(map);
@@ -634,9 +636,10 @@ function myLocationMarker(map){
         title:"My Location",
         icon: meImg
     });
-    
+    var minStation = compareDistance();
+    infoText = "Closest Red Line Station: " + redStationNames[minStation] + " Distance in miles: " + distances[minStation].toFixed(2) + "m";
     infowindow = new google.maps.InfoWindow({
-        content: "My location"
+        content: infoText
     });
     
     myMarker.addListener('click', function(){
@@ -650,5 +653,33 @@ function initZoom(map){
     bounds.extend(myLoc);
     bounds.extend(defaultLoc);
     map.fitBounds(bounds);
+}
+
+function compareDistance(){
+    Number.prototype.toRad = function(){
+        return this * Math.PI / 180;
+    }
+
+    for(var i = 0; i < redStationNames.length; i++){
+        var R = 6371;
+        var m = 0.62137119224;
+        var lat1 = redStations[redStationNames[i]]["lat"];
+        var lng1 = redStations[redStationNames[i]]["lng"];
+        var x1 = myLat - lat1;
+        var dLat = x1.toRad();
+        var x2 = myLng - lng1;
+        var dLng = x2.toRad();
+        var a = Math.sin(dLat/2) * Math.sin(dLat/2) + Math.cos(lat1.toRad()) * Math.cos(myLat.toRad()) * Math.sin(dLng/2) * Math.sin(dLng/2);
+        var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+        distances.push(R * c * m);
+    }
+
+    Array.min = function(array){
+        return Math.min.apply(Math, array);
+    }
+    var minDistance = Array.min(distances);
+    minStation = distances.indexOf(minDistance);
+
+    return minStation;
 }
 
