@@ -579,6 +579,7 @@ distances = [];
 redStationData = {};
 
 function init(){
+    console.log("HEYYY");
     map = new google.maps.Map(document.getElementById("mbta_map"), options);
     initZoom(map);
     minSta = compareDistance();
@@ -604,16 +605,24 @@ function markers(map, stations, names){
             icon: img
         });
         marker.setMap(map);
-    }
-    /*if(stations == "redStations"){
-        infowindow = new google.maps.InfoWindow({
-            content: infoText
-        });
+
+        if(stations == redStations){
+            /*console.log("YO");
+
+            infoText = redStationData[names[i]]["info"];
+            console.log(infoText);*/
+            infoText = "HELLO";
+
+            infowindow = new google.maps.InfoWindow({
+                content: infoText
+            });
     
-        marker.addListener('click', function(){
-            infowindow.open(map, marker);
-        });
-    }*/
+            marker.addListener('click', function(){
+                //infowindow.setContent(this.infoText);
+                infowindow.open(map, this);
+            });
+        }
+    }
 }
 
 function getLocation(){
@@ -627,8 +636,7 @@ function getLocation(){
                 center: myLoc,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
-
-            init();
+            redLineSched();
         });
     }
     else{
@@ -639,7 +647,7 @@ function getLocation(){
             center: myLoc,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        init();
+        redLineSched();
     }
 }
 
@@ -714,24 +722,25 @@ function compareDistance(){
 
 function redLineSched(){
     request.open("GET", "https://powerful-depths-66091.herokuapp.com/redline.json");
-    request.onreadystatechange = getSched;
 
-    request.send(null);
-
-    function getSched(){
+    request.onreadystatechange = function(){
         if(request.readyState == 4 && request.status == 200){
             result = "";
             raw = request.responseText;
             schedData = JSON.parse(raw);
             for(var i = 0; i < schedData["TripList"]["Trips"].length; i++){
-                var content = "<p>Next Red Line train to " + theScheduleData["TripList"]["Trips"][i]["Predictions"][0]["Stop"] + ", " + theScheduleData["TripList"]["Trips"][i]["Destination"] + " bound, will come in " + theScheduleData["TripList"]["Trips"][i]["Predictions"][0]["Seconds"] + " seconds</p>";
-                redStationData[schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"]] = {"info":content};
+                var content = "<p>Next Red Line train to " + schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"] + ", " + schedData["TripList"]["Trips"][i]["Destination"] + " bound, will come in " + schedData["TripList"]["Trips"][i]["Predictions"][0]["Seconds"] + " seconds</p>";
+                redStationData[schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"]] += {"info":content};
             }
         }
         else if(request.readyState == 4 && request.status != 200){
             console.log("Failed to get Red Line Train Schedules");
         }
-    }
+    };
+
+    request.send(null);
+
+    init();
 }
 
 
