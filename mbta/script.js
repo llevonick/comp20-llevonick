@@ -646,7 +646,7 @@ function myLocationMarker(map){
         icon: meImg
     });
 
-    infoText = "Closest Red Line Station: " + redStationNames[minSta] + " Distance in miles: " + distances[minSta].toFixed(2) + "m";
+    infoText = "<p>Closest Red Line Station: " + redStationNames[minSta] + "</p><p>Distance in miles: " + distances[minSta].toFixed(2) + "m</p>";
     infowindow = new google.maps.InfoWindow({
         content: infoText
     });
