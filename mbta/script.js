@@ -720,10 +720,9 @@ function redLineSched(map){
             for(var i = 0; i < schedData["TripList"]["Trips"].length; i++){
                 var station = schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"];
                 var infoText = "<p>Next Red Line train to " + station + ", " + schedData["TripList"]["Trips"][i]["Destination"] + " bound, will come in " + schedData["TripList"]["Trips"][i]["Predictions"][0]["Seconds"] + " seconds</p>";
-                console.log("hi", schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"])
+
                 redStationData[station] += infoText;
                 redStationMarkers[station].content = redStationData[station];
-                console.log(redStationMarkers[station]);
 
                 google.maps.event.addListener(redStationMarkers[station], 'click', function(){
                     infowindow.setContent(this.content);
@@ -732,10 +731,6 @@ function redLineSched(map){
             }
 
         }
-        else if(request.readyState == 4 && request.status != 200){
-            console.log("Failed to get Red Line Train Schedules");
-        }
-
     };
 
     request.send(null);
