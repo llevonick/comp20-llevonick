@@ -584,11 +584,11 @@ function init(){
     initZoom(map);
     minSta = compareDistance();
     myLocationMarker(map);
-    markers(map, redStations, redStationNames);
     markers(map, orangeStations, orangeStationNames);
     markers(map, blueStations, blueStationNames);
     markers(map, purpleStations, purpleStationNames);
     markers(map, comRailStations, comRailStationNames);
+    markers(map, redStations, redStationNames);
     purplePolyline(map);
     comRailPolyline(map);
     orangePolyline(map);
@@ -723,6 +723,7 @@ function redLineSched(map){
                 console.log("hi", schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"])
                 redStationData[station] += infoText;
                 redStationMarkers[station].content = redStationData[station];
+                console.log(redStationMarkers[station]);
 
                 google.maps.event.addListener(redStationMarkers[station], 'click', function(){
                     infowindow.setContent(this.content);
