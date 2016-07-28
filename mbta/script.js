@@ -718,13 +718,13 @@ function redLineSched(map){
 
             for(var i = 0; i < schedData["TripList"]["Trips"].length; i++){
                 var station = schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"];
-                var infoText = "<p>Next Red Line train to " + station + ", " + schedData["TripList"]["Trips"][i]["Destination"] + " bound, will come in " + schedData["TripList"]["Trips"][i]["Predictions"][0]["Seconds"] + " seconds</p>";
+                var infoText = "<p>Red Line train to " + station + ", " + schedData["TripList"]["Trips"][i]["Destination"] + " bound, arriving in " + schedData["TripList"]["Trips"][i]["Predictions"][0]["Seconds"] + " seconds</p>";
                 
                 if(redStationData[station] != undefined){
                     redStationData[station] += infoText;
                 }
                 else{
-                    redStationData[station] = infoText;
+                    redStationData[station] =  infoText;
                 }
                 
                 redStationMarkers[station].content = redStationData[station];
