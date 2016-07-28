@@ -609,6 +609,11 @@ function markers(map, stations, names){
 
         if(stations == redStations){
             redStationMarkers[names[i]] = marker;
+            redStationMarkers[names[i]].content = "<p>No avaliable Red Line train information for " + names[i] + "</p>";
+            google.maps.event.addListener(redStationMarkers[names[i]], 'click', function(){
+                    infowindow.setContent(this.content);
+                    infowindow.open(map, this);
+                });
         }
     }
 }
