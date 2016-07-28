@@ -713,16 +713,22 @@ function redLineSched(map){
 
     request.onreadystatechange = function(){
         if(request.readyState == 4 && request.status == 200){
-            result = "";
             raw = request.responseText;
             schedData = JSON.parse(raw);
 
             for(var i = 0; i < schedData["TripList"]["Trips"].length; i++){
                 var station = schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"];
                 var infoText = "<p>Next Red Line train to " + station + ", " + schedData["TripList"]["Trips"][i]["Destination"] + " bound, will come in " + schedData["TripList"]["Trips"][i]["Predictions"][0]["Seconds"] + " seconds</p>";
-
-                redStationData[station] += infoText;
+                
+                if(redStationData[station] != undefined){
+                    redStationData[station] += infoText;
+                }
+                else{
+                    redStationData[station] = infoText;
+                }
+                
                 redStationMarkers[station].content = redStationData[station];
+
 
                 google.maps.event.addListener(redStationMarkers[station], 'click', function(){
                     infowindow.setContent(this.content);
