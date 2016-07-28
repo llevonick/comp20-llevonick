@@ -609,20 +609,6 @@ function markers(map, stations, names){
 
         if(stations == redStations){
             redStationMarkers[names[i]] = marker;
-            //console.log(redStationMarkers[names[i]]);
-            /*console.log(names[i]);
-            console.log(redStationData["Alewife"]);
-            infoText = redStationData[names[i]]["info"];
-            console.log(infoText);
-
-            infowindow = new google.maps.InfoWindow({
-                content: infoText
-            });
-    
-            marker.addListener('click', function(){
-                //infowindow.setContent(this.infoText);
-                infowindow.open(map, this);
-            });*/
         }
     }
 }
@@ -742,21 +728,6 @@ function redLineSched(map){
                     infowindow.setContent(this.content);
                     infowindow.open(map, this);
                 });
-                /*for(var j = 0; j < redStationNames.length; j++){
-                    if(redStationNames[j] == schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"]){
-                        //console.log(redStationNames[j], schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"]);
-                        redStationMarkers[redStationNames[j]].content = infoText;
-                        //infowindow = new google.maps.InfoWindow({
-                            //content: infoText
-                        //});
-    
-                        google.maps.event.addListener(redStationMarkers[redStationNames[j]], 'click', function(){
-                            infowindow.setContent(this.content);
-                            infowindow.open(map, this);
-
-                        });
-                    }
-                }*/
             }
 
         }
@@ -767,8 +738,6 @@ function redLineSched(map){
     };
 
     request.send(null);
-
-    //redStationInfoNames = Object.keys(redStationData);
 }
 
 
