@@ -577,9 +577,9 @@ bounds = new google.maps.LatLngBounds();
 distances = [];
 
 redStationData = {};
+redStationMarkers = {};
 
 function init(){
-    console.log("HEYYY");
     map = new google.maps.Map(document.getElementById("mbta_map"), options);
     initZoom(map);
     minSta = compareDistance();
@@ -595,6 +595,7 @@ function init(){
     bluePolyline(map);
     redPolyline(map);
     closestRedPolyline(map);
+    redLineSched(map);
 }
 
 function markers(map, stations, names){
@@ -607,11 +608,12 @@ function markers(map, stations, names){
         marker.setMap(map);
 
         if(stations == redStations){
-            /*console.log("YO");
-
+            redStationMarkers[names[i]] = marker;
+            //console.log(redStationMarkers[names[i]]);
+            /*console.log(names[i]);
+            console.log(redStationData["Alewife"]);
             infoText = redStationData[names[i]]["info"];
-            console.log(infoText);*/
-            infoText = "HELLO";
+            console.log(infoText);
 
             infowindow = new google.maps.InfoWindow({
                 content: infoText
@@ -620,7 +622,7 @@ function markers(map, stations, names){
             marker.addListener('click', function(){
                 //infowindow.setContent(this.infoText);
                 infowindow.open(map, this);
-            });
+            });*/
         }
     }
 }
@@ -636,7 +638,7 @@ function getLocation(){
                 center: myLoc,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
-            redLineSched();
+            init();
         });
     }
     else{
@@ -647,7 +649,7 @@ function getLocation(){
             center: myLoc,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         };
-        redLineSched();
+        init();
     }
 }
 
@@ -720,7 +722,7 @@ function compareDistance(){
     return minStation;
 }
 
-function redLineSched(){
+function redLineSched(map){
     request.open("GET", "https://powerful-depths-66091.herokuapp.com/redline.json");
 
     request.onreadystatechange = function(){
@@ -728,19 +730,45 @@ function redLineSched(){
             result = "";
             raw = request.responseText;
             schedData = JSON.parse(raw);
+
             for(var i = 0; i < schedData["TripList"]["Trips"].length; i++){
-                var content = "<p>Next Red Line train to " + schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"] + ", " + schedData["TripList"]["Trips"][i]["Destination"] + " bound, will come in " + schedData["TripList"]["Trips"][i]["Predictions"][0]["Seconds"] + " seconds</p>";
-                redStationData[schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"]] += {"info":content};
+                var station = schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"];
+                var infoText = "<p>Next Red Line train to " + station + ", " + schedData["TripList"]["Trips"][i]["Destination"] + " bound, will come in " + schedData["TripList"]["Trips"][i]["Predictions"][0]["Seconds"] + " seconds</p>";
+                console.log("hi", schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"])
+                redStationData[station] += infoText;
+                redStationMarkers[station].content = redStationData[station];
+
+                google.maps.event.addListener(redStationMarkers[station], 'click', function(){
+                    infowindow.setContent(this.content);
+                    infowindow.open(map, this);
+                });
+                /*for(var j = 0; j < redStationNames.length; j++){
+                    if(redStationNames[j] == schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"]){
+                        //console.log(redStationNames[j], schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"]);
+                        redStationMarkers[redStationNames[j]].content = infoText;
+                        //infowindow = new google.maps.InfoWindow({
+                            //content: infoText
+                        //});
+    
+                        google.maps.event.addListener(redStationMarkers[redStationNames[j]], 'click', function(){
+                            infowindow.setContent(this.content);
+                            infowindow.open(map, this);
+
+                        });
+                    }
+                }*/
             }
+
         }
         else if(request.readyState == 4 && request.status != 200){
             console.log("Failed to get Red Line Train Schedules");
         }
+
     };
 
     request.send(null);
 
-    init();
+    //redStationInfoNames = Object.keys(redStationData);
 }
 
 
