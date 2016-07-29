@@ -722,23 +722,25 @@ function redLineSched(map){
             schedData = JSON.parse(raw);
 
             for(var i = 0; i < schedData["TripList"]["Trips"].length; i++){
-                var station = schedData["TripList"]["Trips"][i]["Predictions"][0]["Stop"];
-                var infoText = "<p>Red Line train to " + station + ", " + schedData["TripList"]["Trips"][i]["Destination"] + " bound, arriving in " + schedData["TripList"]["Trips"][i]["Predictions"][0]["Seconds"] + " seconds</p>";
+                for(var j = 0; j < schedData["TripList"]["Trips"][i]["Predictions"].length; j++){
+                    var station = schedData["TripList"]["Trips"][i]["Predictions"][j]["Stop"];
+                    var infoText = "<p>Red Line train to " + station + ", " + schedData["TripList"]["Trips"][i]["Destination"] + " bound, arriving in " + schedData["TripList"]["Trips"][i]["Predictions"][0]["Seconds"] + " seconds</p>";
+                    
+                    if(redStationData[station] != undefined){
+                        redStationData[station] += infoText;
+                    }
+                    else{
+                        redStationData[station] =  infoText;
+                    }
                 
-                if(redStationData[station] != undefined){
-                    redStationData[station] += infoText;
-                }
-                else{
-                    redStationData[station] =  infoText;
-                }
-                
-                redStationMarkers[station].content = redStationData[station];
+                    redStationMarkers[station].content = redStationData[station];
 
 
-                google.maps.event.addListener(redStationMarkers[station], 'click', function(){
-                    infowindow.setContent(this.content);
-                    infowindow.open(map, this);
-                });
+                    google.maps.event.addListener(redStationMarkers[station], 'click', function(){
+                        infowindow.setContent(this.content);
+                        infowindow.open(map, this);
+                    });
+                }
             }
 
         }
