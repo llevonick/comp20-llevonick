@@ -570,6 +570,11 @@ meImg = {
     scaledSize: new google.maps.Size(60, 45)
 }
 
+trainImg = {
+    url: "train.png",
+    scaledSize: new google.maps.Size(30, 20)
+}
+
 defaultLoc = new google.maps.LatLng(redStations["South Station"]);
 
 bounds = new google.maps.LatLngBounds();
@@ -589,13 +594,13 @@ function init(){
     markers(map, purpleStations, purpleStationNames);
     markers(map, comRailStations, comRailStationNames);
     markers(map, redStations, redStationNames);
+    redLineSched(map);
     purplePolyline(map);
     comRailPolyline(map);
     orangePolyline(map);
     bluePolyline(map);
     redPolyline(map);
     closestRedPolyline(map);
-    redLineSched(map);
 }
 
 function markers(map, stations, names){
@@ -611,9 +616,9 @@ function markers(map, stations, names){
             redStationMarkers[names[i]] = marker;
             redStationMarkers[names[i]].content = "<p>No avaliable Red Line train information for " + names[i] + "</p>";
             google.maps.event.addListener(redStationMarkers[names[i]], 'click', function(){
-                    infowindow.setContent(this.content);
-                    infowindow.open(map, this);
-                });
+                infowindow.setContent(this.content);
+                infowindow.open(map, this);
+            });
         }
     }
 }
@@ -722,6 +727,13 @@ function redLineSched(map){
             schedData = JSON.parse(raw);
 
             for(var i = 0; i < schedData["TripList"]["Trips"].length; i++){
+                if(schedData["TripList"]["Trips"][i]["Position"] != undefined){
+                    console.log(schedData["TripList"]["Trips"][i]["Position"]["Lat"], schedData["TripList"]["Trips"][i]["Position"]["Long"]);
+                    var trainPos = {lat:schedData["TripList"]["Trips"][i]["Position"]["Lat"], lng:schedData["TripList"]["Trips"][i]["Position"]["Long"]};
+                    var trainName = "Train " + schedData["TripList"]["Trips"][i]["Train"];
+                    redTrainMarkers(trainPos, trainName);
+                }
+                
                 for(var j = 0; j < schedData["TripList"]["Trips"][i]["Predictions"].length; j++){
                     var station = schedData["TripList"]["Trips"][i]["Predictions"][j]["Stop"];
                     var infoText = "<p>Red Line train to " + station + ", " + schedData["TripList"]["Trips"][i]["Destination"] + " bound, arriving in " + schedData["TripList"]["Trips"][i]["Predictions"][0]["Seconds"] + " seconds</p>";
@@ -748,6 +760,18 @@ function redLineSched(map){
 
     request.send(null);
 }
+
+function redTrainMarkers(trainPos, trainName){
+    var trainMarker = new google.maps.Marker({
+        position: trainPos,
+        title: trainName,
+        icon: trainImg
+    });
+    
+    trainMarker.setMap(map);
+}
+
+
 
 
 
