@@ -562,7 +562,7 @@ request = new XMLHttpRequest();
 
 img = {
     url: "tmarker.png",
-    scaledSize: new google.maps.Size(15, 20)
+    scaledSize: new google.maps.Size(20, 25)
 }
 
 meImg = {
@@ -574,6 +574,8 @@ trainImg = {
     url: "train.png",
     scaledSize: new google.maps.Size(30, 20)
 }
+
+infowindow = new google.maps.InfoWindow();
 
 defaultLoc = new google.maps.LatLng(redStations["South Station"]);
 
@@ -657,15 +659,23 @@ function myLocationMarker(map){
     });
 
     infoText = "<p>Closest Red Line Station: " + redStationNames[minSta] + "</p><p>Distance in miles: " + distances[minSta].toFixed(2) + "m</p>";
-    infowindow = new google.maps.InfoWindow({
-        content: infoText
-    });
     
-    myMarker.addListener('click', function(){
+    /*myMarker.addListener('click', function(){
         infowindow.open(map, myMarker);
+    });*/
+
+    myMarker.content = infoText;
+
+
+    google.maps.event.addListener(myMarker, 'click', function(){
+        infowindow.setContent(this.content);
+        infowindow.open(map, this);
     });
     
     myMarker.setMap(map);
+
+
+
 }
 
 function initZoom(map){
