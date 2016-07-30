@@ -625,6 +625,7 @@ function markers(map, stations, names){
     }
 }
 
+// Making geolocation work on the map
 function getLocation(){
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(function(position){
@@ -659,13 +660,8 @@ function myLocationMarker(map){
     });
 
     infoText = "<p>Closest Red Line Station: " + redStationNames[minSta] + "</p><p>Distance in miles: " + distances[minSta].toFixed(2) + "m</p>";
-    
-    /*myMarker.addListener('click', function(){
-        infowindow.open(map, myMarker);
-    });*/
 
     myMarker.content = infoText;
-
 
     google.maps.event.addListener(myMarker, 'click', function(){
         infowindow.setContent(this.content);
@@ -673,9 +669,6 @@ function myLocationMarker(map){
     });
     
     myMarker.setMap(map);
-
-
-
 }
 
 function initZoom(map){
@@ -684,6 +677,7 @@ function initZoom(map){
     map.fitBounds(bounds);
 }
 
+// Comparing locations of red line stations to users current location
 function closestRedPolyline(map){
     closestRed = [];
     closestRed.push(myLoc);
@@ -728,6 +722,7 @@ function compareDistance(){
     return minStation;
 }
 
+// Working with the Red Line JSON API
 function redLineSched(map){
     request.open("GET", "https://powerful-depths-66091.herokuapp.com/redline.json");
 
