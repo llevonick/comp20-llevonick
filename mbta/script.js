@@ -740,7 +740,7 @@ function redLineSched(map){
                 
                 for(var j = 0; j < schedData["TripList"]["Trips"][i]["Predictions"].length; j++){
                     var station = schedData["TripList"]["Trips"][i]["Predictions"][j]["Stop"];
-                    var infoText = "<p>Red Line train to " + station + ", " + schedData["TripList"]["Trips"][i]["Destination"] + " bound, arriving in " + schedData["TripList"]["Trips"][i]["Predictions"][0]["Seconds"] + " seconds</p>";
+                    var infoText = "<p>Red Line train to " + station + ", " + schedData["TripList"]["Trips"][i]["Destination"] + " bound, arriving in " + schedData["TripList"]["Trips"][i]["Predictions"][j]["Seconds"] + " seconds</p>";
                     
                     if(redStationData[station] != undefined){
                         redStationData[station] += infoText;
