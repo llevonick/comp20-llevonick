@@ -738,9 +738,8 @@ function redLineSched(map){
 
             for(var i = 0; i < schedData["TripList"]["Trips"].length; i++){
                 if(schedData["TripList"]["Trips"][i]["Position"] != undefined){
-                    console.log(schedData["TripList"]["Trips"][i]["Position"]["Lat"], schedData["TripList"]["Trips"][i]["Position"]["Long"]);
                     var trainPos = {lat:schedData["TripList"]["Trips"][i]["Position"]["Lat"], lng:schedData["TripList"]["Trips"][i]["Position"]["Long"]};
-                    var trainName = "Train " + schedData["TripList"]["Trips"][i]["Train"];
+                    var trainName = "Train " + schedData["TripList"]["Trips"][i]["Position"]["Train"];
                     redTrainMarkers(trainPos, trainName);
                 }
                 
