@@ -575,8 +575,6 @@ trainImg = {
     scaledSize: new google.maps.Size(30, 20)
 }
 
-infowindow = new google.maps.InfoWindow();
-
 defaultLoc = new google.maps.LatLng(redStations["South Station"]);
 
 bounds = new google.maps.LatLngBounds();
@@ -653,6 +651,8 @@ function getLocation(){
 }
 
 function myLocationMarker(map){
+    infowindow = new google.maps.InfoWindow();
+
     myMarker = new google.maps.Marker({
         position: myLoc,
         title:"My Location",
@@ -741,7 +741,7 @@ function redLineSched(map){
                 for(var j = 0; j < schedData["TripList"]["Trips"][i]["Predictions"].length; j++){
                     var station = schedData["TripList"]["Trips"][i]["Predictions"][j]["Stop"];
                     var infoText = "<p>Red Line train to " + station + ", " + schedData["TripList"]["Trips"][i]["Destination"] + " bound, arriving in " + schedData["TripList"]["Trips"][i]["Predictions"][j]["Seconds"] + " seconds</p>";
-                    
+        
                     if(redStationData[station] != undefined){
                         redStationData[station] += infoText;
                     }
@@ -750,7 +750,6 @@ function redLineSched(map){
                     }
                 
                     redStationMarkers[station].content = redStationData[station];
-
 
                     google.maps.event.addListener(redStationMarkers[station], 'click', function(){
                         infowindow.setContent(this.content);
