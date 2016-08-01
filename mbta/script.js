@@ -1,4 +1,4 @@
-// Red line stations and polyline
+// *********** Red line stations and polyline *********** //
 redStations = {}
 redStations["Alewife"] = {lat:42.395428, lng:-71.142483};
 redStations["Davis"] = {lat:42.39674, lng:-71.121815};
@@ -66,7 +66,7 @@ function redPolyline(map){
     SecondRedLinePath.setMap(map);
 }
 
-// Orange line stations and polyline
+// *********** Orange line stations and polyline *********** //
 orangeStations = {}
 orangeStations["Oak Grove"] = {lat:42.436683, lng:-71.071097};
 orangeStations["Malden Center"] = {lat:42.426847, lng:-71.074291};
@@ -109,7 +109,7 @@ function orangePolyline(map){
     orangeLinePath.setMap(map);
 }
 
-// Blue line stations and polyline
+// *********** Blue line stations and polyline *********** //
 blueStations = {}
 blueStations["Wonderland"] = {lat: 42.413648, lng:-70.991589};
 blueStations["Revere Beach"] = {lat:42.407866, lng:-70.992523};
@@ -144,7 +144,7 @@ function bluePolyline(map){
     blueLinePath.setMap(map);
 }
 
-// Top half of Commuter Rail stations and polyline
+// *********** Top half of Commuter Rail stations and polyline *********** //
 purpleStations = {}
 purpleStations["North"] = {lat:42.366413, lng:-71.062144};
 purpleStations["Porter Sqaure"] = {lat:42.3884, lng:-71.11914899999999};
@@ -302,7 +302,7 @@ function purplePolyline(map){
     PurplePathE.setMap(map);
 }
 
-// Bottom half of Commuter Rail stations and polyline
+// *********** Bottom half of Commuter Rail stations and polyline *********** //
 comRailStations = {}
 comRailStations["South Station"] = {lat:42.352271, lng:-71.05524200000001};
 comRailStations["Back Bay"] = {lat:42.347403, lng:-71.075565};
@@ -557,7 +557,7 @@ function comRailPolyline(map){
     comRailPathI.setMap(map);
 }
 
-// Creating the map
+// ****************** Creating the map ****************** //
 request = new XMLHttpRequest();
 
 img = {
@@ -584,6 +584,7 @@ distances = [];
 redStationData = {};
 redStationMarkers = {};
 
+// Creates the map and calls functions to get geolocation, markers, polylines, and infowindows working
 function init(){
     map = new google.maps.Map(document.getElementById("mbta_map"), options);
     initZoom(map);
@@ -603,6 +604,7 @@ function init(){
     closestRedPolyline(map);
 }
 
+// Creates the markers for a MBTA train line
 function markers(map, stations, names){
     for(var i = 0; i < names.length; i++){
         var marker = new google.maps.Marker({
@@ -619,7 +621,9 @@ function markers(map, stations, names){
     }
 }
 
-// Making geolocation work on the map
+// ****************** Making geolocation work on the map ****************** //
+
+// Figures out the location of the user
 function getLocation(){
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(function(position){
@@ -646,6 +650,7 @@ function getLocation(){
     }
 }
 
+// Creates a marker where the user is and creates an infowindow telling the user the closest red line station to them
 function myLocationMarker(map){
     myInfowindow = new google.maps.InfoWindow();
 
@@ -667,13 +672,16 @@ function myLocationMarker(map){
     myMarker.setMap(map);
 }
 
+// Zooms the map so it includes the users location and South Station
 function initZoom(map){
     bounds.extend(myLoc);
     bounds.extend(defaultLoc);
     map.fitBounds(bounds);
 }
 
-// Comparing locations of red line stations to users current location
+// ************** Comparing locations of red line stations to users current location ************** //
+
+// Creates a polyline from the user to the nearest Red Line station
 function closestRedPolyline(map){
     closestRed = [];
     closestRed.push(myLoc);
@@ -690,6 +698,7 @@ function closestRedPolyline(map){
     closestRedPath.setMap(map);
 }
 
+// Figures out which Red Line Station is closest to the user
 function compareDistance(){
     Number.prototype.toRad = function(){
         return this * Math.PI / 180;
@@ -718,7 +727,9 @@ function compareDistance(){
     return minStation;
 }
 
-// Working with the Red Line JSON API
+// ****************** Working with the Red Line JSON API ****************** //
+
+// Sets Red Line Upcoming Train information to all Red Line station's infowindows
 function redLineSched(map){
     request.open("GET", "https://powerful-depths-66091.herokuapp.com/redline.json");
 
@@ -762,6 +773,7 @@ function redLineSched(map){
     request.send(null);
 }
 
+// Creates markers for all trains that are currently on the Red Line
 function redTrainMarkers(map, trainPos, trainName){
     var trainMarker = new google.maps.Marker({
         position: trainPos,
@@ -772,6 +784,7 @@ function redTrainMarkers(map, trainPos, trainName){
     trainMarker.setMap(map);
 }
 
+// Gives infowindows to Red Line stations with no upcoming trains
 function NoRedData(map){
     for(var i = 0; i < redStationNames.length; i++){
         if(redStationMarkers[redStationNames[i]].content == "None"){
