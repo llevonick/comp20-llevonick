@@ -616,7 +616,7 @@ function markers(map, stations, names){
 
         if(stations == redStations){
             redStationMarkers[names[i]] = marker;
-            redStationMarkers[names[i]].content = "None";
+            redStationMarkers[redStationNames[i]].content = "<p>No avaliable Red Line train information for " + names[i] + "</p>";
         }
     }
 }
@@ -758,14 +758,9 @@ function redLineSched(map){
                     }
                 
                     redStationMarkers[station].content = redStationData[station];
-
-                    google.maps.event.addListener(redStationMarkers[station], 'click', function(){
-                        infowindow.setContent(this.content);
-                        infowindow.open(map, this);
-                    });
                 }
             }
-            NoRedData(map);
+            RedInfoWindow(map);
 
         }
     };
@@ -784,18 +779,17 @@ function redTrainMarkers(map, trainPos, trainName){
     trainMarker.setMap(map);
 }
 
-// Gives infowindows to Red Line stations with no upcoming trains
-function NoRedData(map){
+// Gives infowindows to Red Line stations
+function RedInfoWindow(map){
+    var infowindow = new google.maps.InfoWindow();
     for(var i = 0; i < redStationNames.length; i++){
-        if(redStationMarkers[redStationNames[i]].content == "None"){
-            redStationMarkers[redStationNames[i]].content = "<p>No avaliable Red Line train information for " + redStationNames[i] + "</p>";
-            var infowindow = new google.maps.InfoWindow();
+        console.log(redStationMarkers[redStationNames[i]].content);
+        
 
-            google.maps.event.addListener(redStationMarkers[station], 'click', function(){
-                infowindow.setContent(this.content);
-                infowindow.open(map, this);
-            });
-        }
+        google.maps.event.addListener(redStationMarkers[redStationNames[i]], 'click', function(){
+            infowindow.setContent(this.content);
+            infowindow.open(map, this);
+        });
     }
 }
 
