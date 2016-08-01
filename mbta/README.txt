@@ -8,7 +8,9 @@ when one of the red line station markers is clicked on an infowindow appears
 that displays the upcoming trains for that station.  Finally, as a part of the
 "Going Beyond" section of the assignment, there are markers on the map tha look
 like mini trains which signify where the Red Line subway trains are on the map
-based on the JSON data feed.
+based on the JSON data feed. Sometimes these train markers can slightly block
+a Red Line station marker, making the Red Line station markers harder to click
+on for infowindows; this can be fixed by simply zooming in on the map.
 
 I did not collaborate with anyone on this assignment.
 
