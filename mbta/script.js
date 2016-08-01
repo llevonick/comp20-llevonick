@@ -783,9 +783,6 @@ function redTrainMarkers(map, trainPos, trainName){
 function RedInfoWindow(map){
     var infowindow = new google.maps.InfoWindow();
     for(var i = 0; i < redStationNames.length; i++){
-        console.log(redStationMarkers[redStationNames[i]].content);
-        
-
         google.maps.event.addListener(redStationMarkers[redStationNames[i]], 'click', function(){
             infowindow.setContent(this.content);
             infowindow.open(map, this);
