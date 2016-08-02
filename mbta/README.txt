@@ -10,7 +10,12 @@ that displays the upcoming trains for that station.  Finally, as a part of the
 like mini trains which signify where the Red Line subway trains are on the map
 based on the JSON data feed. Sometimes these train markers can slightly block
 a Red Line station marker, making the Red Line station markers harder to click
-on for infowindows; this can be fixed by simply zooming in on the map.
+on for infowindows; this can be fixed by simply zooming in on the map.  Also,
+I figured out that the orange, blue, and commuter rail station markers could
+block the red line station markers whenever the lines overlapped.  This was
+causing the infowindows to not appear when the Red Line markers were clicked
+on, so I commented out all marker creation other than the Red Line station's
+and the Red Line train's but left all rail polylines.
 
 I did not collaborate with anyone on this assignment.
 
