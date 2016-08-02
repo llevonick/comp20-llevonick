@@ -763,15 +763,13 @@ function redLineSched(map){
                     redStationMarkers[station].content = redStationData[station];
                 }
             }
-           RedInfoWindow(map); 
+            RedInfoWindow(map); 
 
         }
     };
 
     request.send(null);
 }
-
-var infowindow = new google.maps.InfoWindow();
 
 // Creates markers for all trains that are currently on the Red Line
 function redTrainMarkers(map, trainPos, trainName){
