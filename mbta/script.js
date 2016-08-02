@@ -147,7 +147,7 @@ function bluePolyline(map){
 // *********** Top half of Commuter Rail stations and polyline *********** //
 purpleStations = {}
 purpleStations["North"] = {lat:42.366413, lng:-71.062144};
-purpleStations["Porter Sqaure"] = {lat:42.3884, lng:-71.11914899999999};
+purpleStations["Porter Square"] = {lat:42.3884, lng:-71.11914899999999};
 purpleStations["Belmont"] = {lat:42.395906, lng:-71.176246};
 purpleStations["Waverley"] = {lat:42.387486, lng:-71.190800};
 purpleStations["Waltham"] = {lat:42.374362, lng:-71.235577};
@@ -590,10 +590,13 @@ function init(){
     initZoom(map);
     minSta = compareDistance();
     myLocationMarker(map);
-    markers(map, orangeStations, orangeStationNames);
-    markers(map, blueStations, blueStationNames);
-    markers(map, purpleStations, purpleStationNames);
-    markers(map, comRailStations, comRailStationNames);
+
+    // Markers from MBTA lines other than Red Line were commented out because some were overlapping Red Line markers, making the Red Line marker infowindows non-functional
+    //markers(map, orangeStations, orangeStationNames);
+    //markers(map, blueStations, blueStationNames);
+    //markers(map, purpleStations, purpleStationNames);
+    //markers(map, comRailStations, comRailStationNames);
+
     markers(map, redStations, redStationNames);
     redLineSched(map);
     purplePolyline(map);
@@ -760,13 +763,15 @@ function redLineSched(map){
                     redStationMarkers[station].content = redStationData[station];
                 }
             }
-            RedInfoWindow(map);
+           RedInfoWindow(map); 
 
         }
     };
 
     request.send(null);
 }
+
+var infowindow = new google.maps.InfoWindow();
 
 // Creates markers for all trains that are currently on the Red Line
 function redTrainMarkers(map, trainPos, trainName){
