@@ -17,7 +17,9 @@ causing the infowindows to not appear when the Red Line markers were clicked
 on, so I commented out all marker creation other than the Red Line station's
 and the Red Line train's but left all rail polylines.
 
-I did not collaborate with anyone on this assignment.
+I did not collaborate with anyone on my assignment.  After I had finished the
+project Ki Ki Chan reached out to me for help with the infowindows based on
+my piazza post and I gave her some general advice!
 
 In order to calculate the distace between 2 geopoints with the Haversine
 formula for this assignment, the following link was used in order to implement
