@@ -734,7 +734,7 @@ function compareDistance(){
 
 // Sets Red Line Upcoming Train information to all Red Line station's infowindows
 function redLineSched(map){
-    request.open("GET", "https://powerful-depths-66091.herokuapp.com/redline.json");
+    request.open("GET", "https://immense-retreat-74090.herokuapp.com/redline.json");
 
     request.onreadystatechange = function(){
         if(request.readyState == 4 && request.status == 200){
