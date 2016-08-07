@@ -638,6 +638,8 @@ function getLocation(){
                 center: myLoc,
                 mapTypeId: google.maps.MapTypeId.ROADMAP
             };
+            UserLoc = "lat=" + myLat + "&lng=" + myLng + "&name=loc";
+            sendLoc(UserLoc);
             init();
         });
     }
@@ -680,6 +682,16 @@ function initZoom(map){
     bounds.extend(myLoc);
     bounds.extend(defaultLoc);
     map.fitBounds(bounds);
+}
+
+// Sends the users latitude and longitude to the server
+function sendLoc(UserLoc){
+    postrequest = new XMLHttpRequest();
+    postrequest.open("POST", "https://immense-retreat-74090.herokuapp.com/redline.json", true);
+
+    postrequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+    postrequest.send(UserLoc);
 }
 
 // ************** Comparing locations of red line stations to users current location ************** //
