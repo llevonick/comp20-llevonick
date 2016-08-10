@@ -1,1 +1,6 @@
-body{background-color:#B8C6C6;}
+body{
+background-color:#B8C6C6;
+font-family:Georgia;
+}
+
+.section{text-decoration:underline;}
