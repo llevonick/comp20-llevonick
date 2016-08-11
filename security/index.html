@@ -44,13 +44,17 @@
 	<li>Unvalidated Redirects and Forwards</li>
 		<ul>
 		<li>Issue found at vulnerableapp.herokuapp.com/checkLocation</li>
-		<li>High: </li>
+		<li>Moderate: This problem can allow attackers to redirect visitors to Not Foursquare to any other webpage, including malicious websites.  Although this problem will cause a user to be sent to a website that they don’t want to go to, the severity is set to moderate because it is easy to detect, prevent, and fix this issue after it happens.  Also, this severity is moderate as the solutions to other issues in this application will make this problem go away.</li>
+		<li><p>By utilizing the issue of cross-site scripting in the Not Foursquare application, I ran this command:</p><p><img src ='pictures/example4/redirect2.png'/></p><p>This made it so when the user tries to load vunerableapp.herokuapp.com their browser redirects them to a completely different webpage:</p><p><img src ='pictures/example4/redirect1.png'/></p><p>This redirect not only means that the user can’t access the actual webpage of the application correctly, but that they may be sent to a malicious website or even fall victim to a phishing attack.  This corrupted data can be accessed in mongodb and removed if wanted:</p><p><img src ='pictures/example4/redirect3.png'/></p></li>
+		<li>This issue can also be resolved with whitelist input validation, as it stems from the cross-site scripting problem in this application.</li>
 		</ul>
 	
 	<li>Sensitive Data Exposure</li>
 		<ul>
 		<li>Issue found at vulnerableapp.herokuapp.com/checkins.json as well as vulnerableapp.herokuapp.com</li>
-		<li>Moderate: </li>
+		<li>Moderate: This issue stems from how an attacker can access sensitive data about a user from this application.  Any data that should have been protected then becomes compromised due to this problem.  The severity of this issue is moderate as it would be difficult for an attacker to exploit these issues.</li>
+		<li><p>Part of this issue is that on the main application website you are able to see a person’s exact latitude and longitude at a given time of day.</p><p><img src ='pictures/example3/pri1.png'/></p><p>This is a privacy issue because it can tell attackers the exact location of a user without them even having to do anything! This kind of issue is also prevalent in check-in features that Facebook has: http://www.wafb.com/story/14603770/hidden-dangers-from-checking-in-on-facebook</p><p>An attacker can also utilize the vunerableapp.herokuapp.com/checkins.json page in order to get sensitive information about the user.  This is because if they add the right query to this address all the data about a user’s check-in will pop-up.  For instance when I type this into a search bar:</p><p><img src ='pictures/example3/pri2.png'/></p><p>This is what happens:</p><p><img src ='pictures/example3/pri3.png'/></p><p>This means that I can now also access the _id value of the data which was not shown on the main page of the website.</p></li>
+		<li>To resolve this issue cryptography can be employed in order to encode sensitive data in the mongodb database, so even if accessed the attacker can’t use the information for their own purposes.  Also, restricting who is able to see a user’s check-in on the main application page may solve some of the privacy issues of anybody online being capable of seeing it.</li>
 		</ul>
 	</ol>
 
