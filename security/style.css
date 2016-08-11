@@ -3,4 +3,9 @@ background-color:#B8C6C6;
 font-family:Georgia;
 }
 
+h1{
+text-decoration:underline;
+
+}
+
 .section{text-decoration:underline;}
