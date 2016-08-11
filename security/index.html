@@ -18,6 +18,7 @@
 	<p>This product is meant to hold users locations at a specific point in time.  It does this by logging a person’s username, latitude, longitude, and time that they are checking-in into a database.  I was hired to assess any potential vulnerability within this web application.  This document describes my findings as well as ways to resolve the problems I have found.</p>
 
 	<div class = "section"><p>Methodology</p></div>
+	<p>First I downloaded the source code that was given to me and ran the web application locally.  After that was done, I attempted some “black box” testing with the main webpage of the application.  I did so by adding some queries into the search bar and by using the curl command in my terminal to try to add login and location information.  When I did this with no results, I decided to move onto “white box” testing where I went over the source code.  Once I read the source code I was able to better understand where I should try to attack the website and used curl as well as an HTML file I wrote in order to attack the application.  Once I was done testing my attacks on the local app I configured, I then sent them over to the actual “Not Foursquare” application using the same methods.</p>
 
 	<div class = "section"><p>Abstract of Findings</p></div>
 
