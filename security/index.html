@@ -56,6 +56,14 @@
 		<li><p>Part of this issue is that on the main application website you are able to see a person’s exact latitude and longitude at a given time of day.</p><p><img src ='pictures/example3/pri1.png'/></p><p>This is a privacy issue because it can tell attackers the exact location of a user without them even having to do anything! This kind of issue is also prevalent in check-in features that Facebook has: http://www.wafb.com/story/14603770/hidden-dangers-from-checking-in-on-facebook</p><p>An attacker can also utilize the vunerableapp.herokuapp.com/checkins.json page in order to get sensitive information about the user.  This is because if they add the right query to this address all the data about a user’s check-in will pop-up.  For instance when I type this into a search bar:</p><p><img src ='pictures/example3/pri2.png'/></p><p>This is what happens:</p><p><img src ='pictures/example3/pri3.png'/></p><p>This means that I can now also access the _id value of the data which was not shown on the main page of the website.</p></li>
 		<li>To resolve this issue cryptography can be employed in order to encode sensitive data in the mongodb database, so even if accessed the attacker can’t use the information for their own purposes.  Also, restricting who is able to see a user’s check-in on the main application page may solve some of the privacy issues of anybody online being capable of seeing it.</li>
 		</ul>
+
+	<li>Sharing With Every Origin</li>
+		<ul>
+		<li>Issue found at vulnerableapp.herokuapp.com/sendLocation</li>
+		<li>High: This issue allows attackers to send an XHR request to Not Foursquare with any website due to the enabling of CORS.</li>
+		<li><p>An attacker is able to post a check-in and add it to application’s database through any html page that has an XHR post request for vunerableapp.herokuapp.com/sendLocation because of this problem.  To demonstrate this issue I wrote an html file that would do exactly this to Not Foursquare:</p><p><img src='pictures/example5/code1.png'/></p><p>When opened this html file has no text or images but it was successful in putting a new check-in into the local version of the application I created:</p><p><img src='pictures/example5/code2.png'/></p><p>However, it does send over a check-in to the application, meaning that the site I created could make a request due to this code in the application's server:</p><p><img src='pictures/example5/code4.png'/></p></li>
+		<li>The resolution to this issue is to use an origin header file in order to tell the server what the regular XHR requests are going to be.</li>
+		</ul>	
 	</ol>
 
 	<div class = "section"><p>Conclusion</p></div>
