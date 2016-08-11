@@ -36,7 +36,9 @@
 	<li>Cross-Site Scripting (XSS)</li>
 		<ul>
 		<li>Issue found at vulnerableapp.herokuapp.com/checkLocation</li>
-		<li>High: </li>
+		<li>High: This is a problem similar to that of injection, but instead of putting untrusted data into the application this security problem allows attackers to send text-based attack scripts that will affect Not Foursquare.  Corrupted data may also be removed retroactively from the mongodb database; however, before this happens the attacker can perform actions like hijack user sessions or insert hostile content into the application.</li>
+		<li><p>In order to take advantage of this security weakness I used the command:</p><p><img src ='pictures/example2/alert3.png'/></p><p>This made an alert window appear on the application when the main page is loaded:</p><p><img src = 'pictures/example2/alert1.png'/></p><p>Once the alert window was exited out of then the check-in information appears as normal:</p><p><img src ='pictures/example2/alert2.png'/></p><p>This data can then be accessed in mongodb in order to be removed:</p><p><img src ='pictures/example2/alert4.png'/></p><p>This alert is a nuisance to the user, and if more malicious code were put in place of it the users browser could be in danger of getting hijacked.</p></li>
+		<li>This issue can be resolved in the same way as injection with whitelist input validation.</li>
 		</ul>
 	
 	<li>Unvalidated Redirects and Forwards</li>
