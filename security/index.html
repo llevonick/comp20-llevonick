@@ -28,18 +28,23 @@
 	<li>Injection</li>
 		<ul>
 		<li>Issue found at vulnerableapp.herokuapp.com/checkLocation</li>
-		<li>High: </li>
+		<li>High: This issue allows an attacker to send untrusted data to the database by exploiting the syntax of checking-in on this application.  This is an issue because it can allow someone to inject images, other html files, and much more into the login section of the check-in. Although corrupted data can later taken out of the mongodb database this problem can lead to issues like data loss and corruption, justifying its severity level.  Also, this level is due to how this issue is easy to exploit and has a severe impact.</li>
+		<li><p>By using the command <img src='pictures/example1/iframe2.png'/> I was able to embed a different html file within  my local version of the application in the login field.  This is what the main page of the application looks like while having this logged as one of the check-ins:</p><p><img src ='pictures/example1/iframe1.png'/></p><p>This check-in data can then be accessed in mongodb and removed if that is desired.</p><p><img src ='pictures/example1/iframe3.png'/></p><p>However, if the embedded file were a harmful website then it may already be too late when trying to fix this problem retroactively as users may have already witnessed the harmful content.  Also, by using this command <img src='pictures/example1/img2.png'/> I was able to embed an image into the local web application through the login field.  The result of this on the main webpage can be seen here:</p><p><img src ='pictures/example1/img1.png'/></p><p>This poses the same issues as the embedded html file and can be accessed and removed in mongodb in the same fashion.</p><p><image src ='pictures/example1/img3.png'/></p></li>
+		<li>In order to resolve this issue, untrusted data must be separated from commands and queries.  Whitelist input validation can be used where you can define exactly what is authorized, making everything else unauthorized.  This way special characters can’t be used in the input.</li>
 		</ul>
+	
 	<li>Cross-Site Scripting (XSS)</li>
 		<ul>
 		<li>Issue found at vulnerableapp.herokuapp.com/checkLocation</li>
 		<li>High: </li>
 		</ul>
+	
 	<li>Unvalidated Redirects and Forwards</li>
 		<ul>
 		<li>Issue found at vulnerableapp.herokuapp.com/checkLocation</li>
 		<li>High: </li>
 		</ul>
+	
 	<li>Sensitive Data Exposure</li>
 		<ul>
 		<li>Issue found at vulnerableapp.herokuapp.com/checkins.json as well as vulnerableapp.herokuapp.com</li>
