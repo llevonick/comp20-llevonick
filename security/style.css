@@ -46,3 +46,13 @@ background-color:#E7E1EE;
 font-size:25px;
 line-height:.55;
 }
+
+.high{
+color:#CF0050;
+font-weight:bold;
+}
+
+.mod{
+color:#FF6100;
+font-weight:bold;
+}
