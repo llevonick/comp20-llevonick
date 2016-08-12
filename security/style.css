@@ -15,4 +15,10 @@ display:block;
 margin:0 auto;
 }
 
+hr{
+padding:0px;
+margin:-10px auto;
+width:99%;
+}
+
 .section{text-decoration:underline;}

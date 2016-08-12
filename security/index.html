@@ -15,15 +15,19 @@
 	<h3>8/10/2016</h3>
 
 	<div class = "section"><p>Introduction</p></div>
+	<hr></hr>
 	<p>This product is meant to hold users locations at a specific point in time.  It does this by logging a person’s username, latitude, longitude, and time that they are checking-in into a database.  I was hired to assess any potential vulnerability within this web application.  This document describes my findings as well as ways to resolve the problems I have found.</p>
 
 	<div class = "section"><p>Methodology</p></div>
+	<hr>
 	<p>First I downloaded the source code that was given to me and ran the web application locally.  After that was done, I attempted some “black box” testing with the main webpage of the application.  I did so by adding some queries into the search bar and by using the curl command in my terminal to try to add login and location information.  When I did this with no results, I decided to move onto “white box” testing where I went over the source code.  Once I read the source code I was able to better understand where I should try to attack the website and used curl as well as an HTML file I wrote in order to attack the application.  Once I was done testing my attacks on the local app I configured, I then sent them over to the actual “Not Foursquare” application using the same methods.</p>
 
 	<div class = "section"><p>Abstract of Findings</p></div>
+	<hr></hr>
 	<p>Many of the problems I found stem from not protecting the application from user input.  By trusting the user, the application is leaving itself wide open to attacks, making it recommendable to not release this application until some of its issues are fixed.  Despite its issues, this application does protect against a few things well.  For instance, it does not store additional fields of user information into the mongodb database.  This saves storage space if someone decides to add random fields to a new check-in with a command like: <code>curl –data “login=bob&lat=0&lng=0&extrafield=whatever” http://vunerableapp.herokuapp.com/sendLocation</code>.  Also, this application protects against any impossible latitude or longitude values that may get inserted as input into the application.</p>
 
 	<div class = "section"><p>Issues Found</p></div>
+	<hr></hr>
 	<ol>
 	<li>Injection</li>
 		<ul>
@@ -67,6 +71,7 @@
 	</ol>
 
 	<div class = "section"><p>Conclusion</p></div>
+	<hr></hr>
 	<p>Before being used by the public Not Foursquare should try to adjust its code in order to fix some of the issues described above, or else it may run into some major issues down the road, mainly due to its trust in user input.  The resolutions to the application’s problems are relatively easy to implement as a lot of the solutions overlap, so it should not be too much of a hassle to fix them.  However, the current structure of the application where user privacy is disregarded by placing their location at a certain time for anyone to see can be problematic, and should be looked into.</p>
 
 </body>
