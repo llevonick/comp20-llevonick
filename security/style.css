@@ -1,11 +1,17 @@
 body{
-background-color:#B8C6C6;
-font-family:Georgia;
+background-color:#C6DAD8;
+font-family:Goudy Old Style;
 }
 
 h1{
 text-decoration:underline;
+font-size:35px;
+line-height:.55;
+}
 
+h2, h3{
+font-size:16px;
+line-height:.4;
 }
 
 img{
@@ -15,10 +21,23 @@ display:block;
 margin:0 auto;
 }
 
+ol{
+font-weight: bold;
+}
+
+ul{
+font-weight:normal;
+}
+
 hr{
 padding:0px;
 margin:-10px auto;
 width:99%;
 }
 
-.section{text-decoration:underline;}
+code{background-color:#A4B0B0;}
+
+.section{
+font-size:25px;
+line-height:.55;
+}
