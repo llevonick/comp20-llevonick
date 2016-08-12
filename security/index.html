@@ -37,7 +37,7 @@
 
 		<li><p>By using the command <img src='pictures/example1/iframe2.png'/> I was able to embed a different html file within  my local version of the application in the login field.  This is what the main page of the application looks like while having this logged as one of the check-ins:</p><p><img src ='pictures/example1/iframe1.png'/></p><p>This check-in data can then be accessed in mongodb and removed if that is desired.</p><p><img src ='pictures/example1/iframe3.png'/></p><p>However, if the embedded file were a harmful website then it may already be too late when trying to fix this problem retroactively as users may have already witnessed the harmful content.  Also, by using this command <img src='pictures/example1/img2.png'/> I was able to inject an image into the local web application through the login field.  The result of this on the main webpage can be seen here:</p><p><img src ='pictures/example1/img1.png'/></p><p>This poses the same issues as the embedded html file and can be accessed and removed in mongodb in the same fashion.</p><p><image src ='pictures/example1/img3.png'/></p></li>
 
-		<li><p>In order to resolve this issue, untrusted data must be separated from commands and queries.  Whitelist input validation can be used where you can define exactly what is authorized, making everything else unauthorized.  This way special characters can’t be used in the input.</p></li>
+		<li><p>In order to resolve this issue, untrusted data must be separated from commands and queries.  This can be done by removing the ability for data to be interpreted as code, where any input with <code>&lt</code> can be changed to have <code>&amplt</code> in its place and any input with <code>&gt</code> can be changed to have <code>&ampgt</code>.  Also, whitelist input validation can be used where you can define exactly what is authorized, making everything else unauthorized.  This way special characters can’t be used in the input.</p></li>
 		</ul>
 
 	<p></p>
@@ -49,7 +49,7 @@
 
 		<li><p>In order to take advantage of this security weakness I used the command:</p><p><img src ='pictures/example2/alert3.png'/></p><p>This made an alert window appear on the application when the main page is loaded:</p><p><img src = 'pictures/example2/alert1.png'/></p><p>Once the alert window was exited out of then the check-in information appears as normal:</p><p><img src ='pictures/example2/alert2.png'/></p><p>This data can then be accessed in mongodb in order to be removed:</p><p><img src ='pictures/example2/alert4.png'/></p><p>This alert is a nuisance to the user, and if more malicious code were put in place of it the users browser could be in danger of getting hijacked.</p></li>
 
-		<li><p>This issue can be resolved in the same way as injection with whitelist input validation.</p></li>
+		<li><p>This issue can be resolved in the same way as injection with whitelist input validation and by changing the <code>&lt</code> and <code>&gt</code> characters.</p></li>
 		</ul>
 	
 	<p></p>
@@ -61,7 +61,7 @@
 
 		<li><p>By utilizing the issue of cross-site scripting in the Not Foursquare application, I ran this command:</p><p><img src ='pictures/example4/redirect3.png'/></p><p>This made it so when the user tries to load vunerableapp.herokuapp.com their browser redirects them to a completely different webpage:</p><p><img src ='pictures/example4/redirect1.png'/></p><p>This redirect not only means that the user can’t access the actual webpage of the application correctly, but that they may be sent to a malicious website or even fall victim to a phishing attack.  This corrupted data can be accessed in mongodb and removed if wanted:</p><p><img src ='pictures/example4/redirect2.png'/></p></li>
 
-		<li><p>This issue can also be resolved with whitelist input validation, as it stems from the cross-site scripting problem in this application.</p></li>
+		<li><p>This issue can also be resolved with whitelist input validation and by changing the <code>&lt</code> and <code>&gt</code> characters, as it stems from the cross-site scripting problem in this application.</p></li>
 		</ul>
 	
 	<p></p>
