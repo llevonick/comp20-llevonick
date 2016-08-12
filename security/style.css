@@ -21,13 +21,9 @@ display:block;
 margin:0 auto;
 }
 
-ol{
-font-weight: bold;
-}
+ol{font-weight:bold;}
 
-ul{
-font-weight:normal;
-}
+ul{font-weight:normal;}
 
 hr{
 padding:0px;
