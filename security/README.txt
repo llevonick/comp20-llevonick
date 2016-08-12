@@ -8,7 +8,7 @@ by me taking advantage of them on vulnerableapp.herokuapp.com, as I injected
 a gif as one of the login names, then I made the page redirect to 
 http://heyyeyaaeyaaaeyaeyaa.com, and finally I made it so there would be an
 alert about Nicolas Cage anytime someone tried to load the website.  The
-write-up was put into HTML format and special attention was put to checking
+write-up was put into HTML format and special attention was put into checking
 the grammer, spelling, and style of this page.  Finally, this is all located
 in the correct folder on GitHub.
 
